@@ -1,18 +1,14 @@
 (function() {
   'use strict';
 
-  var m = require('mithril');
+  module.exports = {
 
-  var navbar = {};
+    model: function() {},
 
-  navbar.controller = function() {
+    controller: function() {},
+
+    view: function(ctrl) { return require('../views/navbar')(ctrl); }
 
   };
-
-  navbar.view = function(ctrl) {
-    return require('../views/navbar')(ctrl);
-  };
-
-  module.exports = navbar;
 
 })();

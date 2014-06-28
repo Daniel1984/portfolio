@@ -6,56 +6,173 @@
 
   window.onload = function() {
     m.route.mode = 'hash';
-//    m.route(document.querySelector('.ui-router'), '/', {
-//      '/': require('./modules/main'),
-//    });
+    m.route(document.querySelector('.ui-router'), '/', {
+      '/'         : require('./modules/intro'),
+      '/portfolio': require('./modules/portfolio'),
+      '/about'    : require('./modules/about'),
+      '/contact'  : require('./modules/contact')
+    });
     
     m.module(document.querySelector('.navbar-section'), require('./modules/navbar'));
-    m.module(document.querySelector('.portfolio-section'), require('./modules/portfolio'));
   };
 
 })();
 
-},{"./modules/navbar":2,"./modules/portfolio":3,"mithril":6}],2:[function(require,module,exports){
+},{"./modules/about":2,"./modules/contact":3,"./modules/intro":4,"./modules/navbar":5,"./modules/portfolio":6,"mithril":12}],2:[function(require,module,exports){
+(function() {
+  'use strict';
+
+  module.exports = {
+
+    model: function() {},
+
+    controller: function() {},
+
+    view: function(ctrl) { return require('../views/about')(ctrl); }
+
+  };
+
+})();
+
+},{"../views/about":7}],3:[function(require,module,exports){
+(function() {
+  'use strict'; 
+
+  module.exports = {
+    
+    model: function() {},
+
+    controller: function() {},
+
+    view: function(ctrl) { return require('../views/contact')(ctrl); }
+
+  };
+
+})();
+
+},{"../views/contact":8}],4:[function(require,module,exports){
+(function() {
+  'use strict';
+
+  module.exports = {
+
+    model: function() {},
+
+    controller: function() {},
+
+    view: function(ctrl) { return require('../views/intro')(ctrl); }
+
+  };
+
+})();
+
+},{"../views/intro":9}],5:[function(require,module,exports){
+(function() {
+  'use strict';
+
+  module.exports = {
+
+    model: function() {},
+
+    controller: function() {},
+
+    view: function(ctrl) { return require('../views/navbar')(ctrl); }
+
+  };
+
+})();
+
+},{"../views/navbar":10}],6:[function(require,module,exports){
+(function() {
+  'use strict';
+
+  module.exports = {
+
+    model: function() {},
+
+    controller: function() {},
+
+    view: function(ctrl) { return require('../views/portfolio')(ctrl); }
+
+  };
+
+})();
+
+},{"../views/portfolio":11}],7:[function(require,module,exports){
 (function() {
   'use strict';
 
   var m = require('mithril');
 
-  var navbar = {};
-
-  navbar.controller = function() {
-
+  module.exports = function(ctrl) {
+    return m("div.about.container", [
+      m('div.abuot-header', [
+        m('h1', 'About'),
+        m('hr.star-light')
+      ])
+    ]);
   };
-
-  navbar.view = function(ctrl) {
-    return require('../views/navbar')(ctrl);
-  };
-
-  module.exports = navbar;
 
 })();
 
-},{"../views/navbar":4,"mithril":6}],3:[function(require,module,exports){
+},{"mithril":12}],8:[function(require,module,exports){
 (function() {
   'use strict';
 
   var m = require('mithril');
 
-  var portfolio = {};
-
-  portfolio.controller = function() {
-
+  module.exports = function(ctrl) {
+    return m("div.contact.row-fluid", [
+      m('div.abuot-header', [
+        m('h1', 'Contact me'),
+        m('hr.star-light')
+      ]),
+      m('div.col-xs-12.col-sm-8.col-md-8.col-lg-8.col-sm-offset-2.col-md-offset-2.col-lg-offset-2', [
+        m('form', [
+          m('div.form-group', [
+            m('label', 'Name'),
+            m("input.form-control[type='text'] [placeholder='Name']")
+          ]),
+          m('div.form-group', [
+            m('label', 'Email Address'),
+            m("input.form-control[type='email'] [placeholder='Email Address']")
+          ]),
+          m('div.form-group', [
+            m('label', 'Message'),
+            m("textarea.form-control [placeholder='Message'] [rows='4']")
+          ]),
+          m('div.form-group', [
+            m("button.btn.btn-lg.btn-success.pull-left [type='submit']", 'Send')
+          ])
+        ])
+      ])
+    ]);
   };
 
-  portfolio.view = function(ctrl) {
-    return require('../views/portfolio')(ctrl);
-  };
-
-  module.exports = portfolio;
 })();
 
-},{"../views/portfolio":5,"mithril":6}],4:[function(require,module,exports){
+},{"mithril":12}],9:[function(require,module,exports){
+(function() {
+  'use strict';
+
+  var m = require('mithril');
+
+  module.exports = function(ctrl) {
+    return m("div.intro.container", [
+      m('div.pic.col-xs-12.col-sm-4.col-md-4.col-lg-4.col-sm-offset-4.col-md-offset-4.col-lg-offset-4', [
+        m("img[src='/img/me.png']")
+      ]),
+      m('div.intro-text', [
+        m('h1', 'Javascript RockStar Developer')
+      ]),
+      m('hr.star-light'),
+      m("a.btn.btn-lg.btn-outline[href='/#/portfolio']", 'Portfolio')
+    ]);
+  };
+
+})();
+
+},{"mithril":12}],10:[function(require,module,exports){
 (function() {
   'use strict';
 
@@ -64,21 +181,20 @@
   module.exports = function(ctrl) {
     return m('nav.navbar.navbar-default.navbar-fixed-top', [
       m('div.container', [
-        m('div.navbar-header.page-scroll', [
-          m("a.navbar-brand[href='/#/']", 'Daniel Stenger')
+        m('div.navbar-header', [
+          m("a.navbar-brand[href='/#/']", 'Daniel Stenger'),
+          
         ]),
-        m('div.navbar-header.page-scroll', [
-          m("div.navbar-collapse.collapse.in", [
-            m('ul.nav.navbar-nav.navbar-right', [
-              m('li.page-scroll', [
-                m("a[href='/#/portfolio']", 'Portfolio')
-              ]),
-              m('li.page-scroll', [
-                m("a[href='/#/about']", 'About')
-              ]),
-              m('li.page-scroll', [
-                m("a[href='/#/contact']", 'Contact')
-              ])
+        m("div.collapse.navbar-collapse", [
+          m('ul.nav.navbar-nav.navbar-right', [
+            m('li.page-scroll', [
+              m("a[href='/#/portfolio']", 'Portfolio')
+            ]),
+            m('li.page-scroll', [
+              m("a[href='/#/about']", 'About')
+            ]),
+            m('li.page-scroll', [
+              m("a[href='/#/contact']", 'Contact')
             ])
           ])
         ])
@@ -88,30 +204,24 @@
 
 })();
 
-},{"mithril":6}],5:[function(require,module,exports){
+},{"mithril":12}],11:[function(require,module,exports){
 (function() {
   'use strict';
 
   var m = require('mithril');
 
   module.exports = function(ctrl) {
-    return m("div", [
-      m("input"),
-      m("button", "Add"),
-      m("table", [
-        m("tr", [
-          m("td", [
-            m("input[type=checkbox]")
-          ]),
-          m("td", "task description"),
-        ])
+    return m("div.portfolio.container", [
+      m('div.abuot-header', [
+        m('h1', 'Portfolio'),
+        m('hr.star-light')
       ])
     ]);
   };
 
 })();
 
-},{"mithril":6}],6:[function(require,module,exports){
+},{"mithril":12}],12:[function(require,module,exports){
 Mithril = m = new function app(window) {
 	var selectorCache = {}
 	var type = {}.toString

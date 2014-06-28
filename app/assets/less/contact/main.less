@@ -1,0 +1,70 @@
+div.contact {
+  padding-top: 100px;
+  text-align: center;
+  height: 100%;
+  overflow: auto;
+  h1 {
+    color: @darkBlue;
+    font-family: 'Lobster', cursive;
+    font-size: 40px;
+    text-shadow: 1px 1px 1px rgba(0,0,0,0.2);
+  }
+  hr.star-light {
+    border-color: @darkBlue;
+    &:after {
+      color: @darkBlue;
+      background-color: #fff;
+    }
+  }
+  form {
+    margin-top: 20px;
+    div.form-group {
+      border-top: 1px solid #eee;
+      input, textarea {
+        z-index: 1;
+        position: relative;
+        padding-right: 0;
+        padding-left: 0;
+        border: 0;
+        border-radius: 0;
+        font-size: 1.5em;
+        background: 0 0;
+        box-shadow: none;
+        resize: none;
+        -webkit-apearance: none;
+        outline: none;
+      }
+      button[type='submit'] {
+        margin: 20px 0 20px 0;
+        background-color: @btnSubmit;
+        border-color: @btnSubmit;
+        padding: 18px 27px;
+        outline: none;
+        -webkit-transition: all 0.3s;
+        -moz-transition: all 0.3s;
+        transition: all 0.3s;
+        &:hover {
+          background-color: darken(@btnSubmit, 10%);
+          border-color: darken(@btnSubmit, 10%);
+        }
+      }
+      label {
+        display: block;
+        z-index: 0;
+        position: relative;
+        top: 2em;
+        margin: 0;
+        font-size: .85em;
+        text-align: left;
+        line-height: 1.764705882em;
+        vertical-align: middle;
+        vertical-align: baseline;
+        opacity: 0;
+        -webkit-transition: top .3s ease,opacity .3s ease;
+        -moz-transition: top .3s ease,opacity .3s ease;
+        -ms-transition: top .3s ease,opacity .3s ease;
+        transition: top .3s ease,opacity .3s ease;
+      }
+    }
+  }
+}

@@ -1,13 +1,13 @@
 (function() {
-  'use strict';
+  'use strict'; 
 
   module.exports = {
-
+    
     model: function() {},
 
     controller: function() {},
 
-    view: function(ctrl) { return require('../views/portfolio')(ctrl); }
+    view: function(ctrl) { return require('../views/contact')(ctrl); }
 
   };
 

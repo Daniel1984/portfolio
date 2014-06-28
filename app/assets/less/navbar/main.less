@@ -1,0 +1,30 @@
+.navbar {
+  border: none;
+  background: @darkBlue;
+  font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif; 
+  text-transform: uppercase;
+  font-weight: 700;
+  .navbar-brand {
+    font-family: 'Lobster', cursive;
+    text-transform: initial;
+    color: #fff;
+    &:hover {
+      color: @navGreen; 
+    }
+  } 
+  a:focus {
+    outline: none;
+  }
+  .navbar-nav {
+    letter-spacing: 1px;
+    li {
+      a {
+        color: white;
+        &:hover {
+          outline: none;
+          color: @navGreen;
+        }
+      }
+    }
+  }
+}
