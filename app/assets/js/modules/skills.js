@@ -7,7 +7,7 @@
 
     controller: function() {},
 
-    view: function(ctrl) { return require('../views/about')(ctrl); }
+    view: function(ctrl) { return require('../views/skills')(ctrl); }
 
   };
 

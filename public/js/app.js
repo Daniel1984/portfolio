@@ -7,10 +7,11 @@
   window.onload = function() {
     m.route.mode = 'hash';
     m.route(document.querySelector('.ui-router'), '/', {
-      '/'         : require('./modules/intro'),
-      '/portfolio': require('./modules/portfolio'),
-      '/about'    : require('./modules/about'),
-      '/contact'  : require('./modules/contact')
+      '/'          : require('./modules/intro'),
+      '/portfolio' : require('./modules/portfolio'),
+      '/skills'    : require('./modules/skills'),
+      '/experience': require('./modules/experience'),
+      '/contact'   : require('./modules/contact')
     });
     
     m.module(document.querySelector('.navbar-section'), require('./modules/navbar'));
@@ -18,23 +19,7 @@
 
 })();
 
-},{"./modules/about":2,"./modules/contact":3,"./modules/intro":4,"./modules/navbar":5,"./modules/portfolio":6,"mithril":12}],2:[function(require,module,exports){
-(function() {
-  'use strict';
-
-  module.exports = {
-
-    model: function() {},
-
-    controller: function() {},
-
-    view: function(ctrl) { return require('../views/about')(ctrl); }
-
-  };
-
-})();
-
-},{"../views/about":7}],3:[function(require,module,exports){
+},{"./modules/contact":2,"./modules/experience":3,"./modules/intro":4,"./modules/navbar":5,"./modules/portfolio":6,"./modules/skills":7,"mithril":14}],2:[function(require,module,exports){
 (function() {
   'use strict'; 
 
@@ -50,7 +35,23 @@
 
 })();
 
-},{"../views/contact":8}],4:[function(require,module,exports){
+},{"../views/contact":8}],3:[function(require,module,exports){
+(function() {
+  'use strict'; 
+
+  module.exports = {
+    
+    model: function() {},
+
+    controller: function() {},
+
+    view: function(ctrl) { return require('../views/experience')(ctrl); }
+
+  };
+
+})();
+
+},{"../views/experience":9}],4:[function(require,module,exports){
 (function() {
   'use strict';
 
@@ -66,7 +67,7 @@
 
 })();
 
-},{"../views/intro":9}],5:[function(require,module,exports){
+},{"../views/intro":10}],5:[function(require,module,exports){
 (function() {
   'use strict';
 
@@ -82,7 +83,7 @@
 
 })();
 
-},{"../views/navbar":10}],6:[function(require,module,exports){
+},{"../views/navbar":11}],6:[function(require,module,exports){
 (function() {
   'use strict';
 
@@ -98,24 +99,23 @@
 
 })();
 
-},{"../views/portfolio":11}],7:[function(require,module,exports){
+},{"../views/portfolio":12}],7:[function(require,module,exports){
 (function() {
   'use strict';
 
-  var m = require('mithril');
+  module.exports = {
 
-  module.exports = function(ctrl) {
-    return m("div.about.container", [
-      m('div.abuot-header', [
-        m('h1', 'About'),
-        m('hr.star-light')
-      ])
-    ]);
+    model: function() {},
+
+    controller: function() {},
+
+    view: function(ctrl) { return require('../views/skills')(ctrl); }
+
   };
 
 })();
 
-},{"mithril":12}],8:[function(require,module,exports){
+},{"../views/skills":13}],8:[function(require,module,exports){
 (function() {
   'use strict';
 
@@ -151,7 +151,36 @@
 
 })();
 
-},{"mithril":12}],9:[function(require,module,exports){
+},{"mithril":14}],9:[function(require,module,exports){
+(function() {
+  'use strict';
+
+  var m = require('mithril');
+
+  module.exports = function(ctrl) {
+    return m("div.experience.row-fluid", [
+      m('h1', 'Experience'),
+      m('hr.star-light'),
+      m('div.experience-content', [
+        m('blockquote', [
+          m('h3', 'Front-end developer at Same System (Vilnius Lithuania)'),
+          m('p', 'Porting native mobile app to cordova. Using Backbone.js, vanilla js, CSS3, HTML5, unit tests with mocha.js, chai.js and karma test runner, automating develoment process with gulp.js.'),
+          m('footer', '2014 Feb - now')
+        ]),
+
+        m('blockquote', [
+          m('h3', 'Front-end software developer at NECOLT (Vilnius, Lithuania)'),
+          m('p', 'Building complex web apps with Ruby On Rails, Backbone.js, HTML5, CSS3. Publicly accessible project: '),
+          m("a[href='https://physitrack.com']", 'https://physitrack.com'),
+          m('footer', '2013 April - 2014 February')
+        ])
+      ])
+    ]);
+  };
+
+})();
+
+},{"mithril":14}],10:[function(require,module,exports){
 (function() {
   'use strict';
 
@@ -172,7 +201,7 @@
 
 })();
 
-},{"mithril":12}],10:[function(require,module,exports){
+},{"mithril":14}],11:[function(require,module,exports){
 (function() {
   'use strict';
 
@@ -182,8 +211,7 @@
     return m('nav.navbar.navbar-default.navbar-fixed-top', [
       m('div.container', [
         m('div.navbar-header', [
-          m("a.navbar-brand[href='/#/']", 'Daniel Stenger'),
-          
+          m("a.navbar-brand[href='/#/']", 'Daniel Stenger')
         ]),
         m("div.collapse.navbar-collapse", [
           m('ul.nav.navbar-nav.navbar-right', [
@@ -191,7 +219,10 @@
               m("a[href='/#/portfolio']", 'Portfolio')
             ]),
             m('li.page-scroll', [
-              m("a[href='/#/about']", 'About')
+              m("a[href='/#/skills']", 'Skills')
+            ]),
+            m('li.page-scroll', [
+              m("a[href='/#/experience']", 'Experience')
             ]),
             m('li.page-scroll', [
               m("a[href='/#/contact']", 'Contact')
@@ -204,7 +235,7 @@
 
 })();
 
-},{"mithril":12}],11:[function(require,module,exports){
+},{"mithril":14}],12:[function(require,module,exports){
 (function() {
   'use strict';
 
@@ -221,7 +252,24 @@
 
 })();
 
-},{"mithril":12}],12:[function(require,module,exports){
+},{"mithril":14}],13:[function(require,module,exports){
+(function() {
+  'use strict';
+
+  var m = require('mithril');
+
+  module.exports = function(ctrl) {
+    return m("div.skills.container", [
+      m('div.abuot-header', [
+        m('h1', 'Skills'),
+        m('hr.star-light')
+      ])
+    ]);
+  };
+
+})();
+
+},{"mithril":14}],14:[function(require,module,exports){
 Mithril = m = new function app(window) {
 	var selectorCache = {}
 	var type = {}.toString
