@@ -19,6 +19,7 @@
     "npm": "1.4.x"
   },
   "devDependencies": {
+    "bootstrap": "git://github.com/twbs/bootstrap.git",
     "gulp": "^3.8.1",
     "gulp-browserify": "^0.5.0",
     "gulp-concat": "^2.2.0",

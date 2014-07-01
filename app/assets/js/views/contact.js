@@ -12,19 +12,34 @@
       m('div.col-xs-12.col-sm-8.col-md-8.col-lg-8.col-sm-offset-2.col-md-offset-2.col-lg-offset-2', [
         m('form', [
           m('div.form-group', [
-            m('label', 'Name'),
-            m("input.form-control[type='text'] [placeholder='Name']")
+            m('label.name', 'Name'),
+            m("input.form-control[type='text'][placeholder='Name'][name='name']",
+              { 
+                onchange: m.withAttr("value", ctrl.name),
+                onkeyup: ctrl.onInputKeyUp
+              }  
+            )
           ]),
           m('div.form-group', [
-            m('label', 'Email Address'),
-            m("input.form-control[type='email'] [placeholder='Email Address']")
+            m('label.email', 'Email Address'),
+            m("input.form-control[type='email'][placeholder='Email Address'][name='email']",
+              { 
+                onchange: m.withAttr("value", ctrl.email),
+                onkeyup: ctrl.onInputKeyUp
+              }  
+            )
           ]),
           m('div.form-group', [
-            m('label', 'Message'),
-            m("textarea.form-control [placeholder='Message'] [rows='4']")
+            m('label.message', 'Message'),
+            m("textarea.form-control[placeholder='Message'][rows='4'][name='message']",
+              { 
+                onchange: m.withAttr("value", ctrl.email),
+                onkeyup: ctrl.onInputKeyUp
+              }  
+            )
           ]),
           m('div.form-group', [
-            m("button.btn.btn-lg.btn-success.pull-left [type='submit']", 'Send')
+            m("button.btn.btn-lg.btn-success.pull-left.btn-outline[type='submit']", { onclick: ctrl.submit }, 'Send')
           ])
         ])
       ])

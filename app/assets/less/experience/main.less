@@ -4,10 +4,10 @@ div.experience {
   padding-top: 100px;
   text-align: center;
   background: @navGreen;
+  color: #fff;
+  text-shadow: 1px 1px 1px rgba(0,0,0,0.2);
   h1, h3 {
-    color: #fff;
-    font-family: 'Lobster', cursive;
-    text-shadow: 1px 1px 1px rgba(0,0,0,0.2);
+    font-family: 'Lobster', cursive; 
   }
   h1 {
     font-size: 40px;
@@ -16,7 +16,17 @@ div.experience {
     padding: 20px 30px;
     text-align: left;
     blockquote {
+      margin-bottom: 50px;
       border-color: #fff;
+      a {
+        text-decoration: underline;
+        text-shadow: none;
+        color: @darkBlue;
+      }
+      footer {
+        text-shadow: none;
+        color: @darkBlue;;
+      }
     }
   }
 }

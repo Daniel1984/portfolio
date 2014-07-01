@@ -3,18 +3,17 @@ div.contact {
   text-align: center;
   height: 100%;
   overflow: auto;
-  h1 {
-    color: @darkBlue;
+  background: @navGreen;
+  h1 { 
     font-family: 'Lobster', cursive;
     font-size: 40px;
+  }
+  h1, input, textarea, button {
     text-shadow: 1px 1px 1px rgba(0,0,0,0.2);
+    color: #fff;
   }
   hr.star-light {
-    border-color: @darkBlue;
-    &:after {
-      color: @darkBlue;
-      background-color: #fff;
-    }
+    border-color: #fff;
   }
   form {
     margin-top: 20px;
@@ -33,6 +32,18 @@ div.contact {
         resize: none;
         -webkit-apearance: none;
         outline: none;
+      }
+      ::-webkit-input-placeholder {
+        color: #fff;;
+      }
+      :-moz-placeholder {
+        color: #fff;  
+      }
+      ::-moz-placeholder {
+        color: #fff;
+      }
+      :-ms-input-placeholder {  
+        color: #fff; 
       }
       button[type='submit'] {
         margin: 20px 0 20px 0;
@@ -54,7 +65,7 @@ div.contact {
         position: relative;
         top: 2em;
         margin: 0;
-        font-size: .85em;
+        font-size: 1em;
         text-align: left;
         line-height: 1.764705882em;
         vertical-align: middle;
@@ -64,6 +75,11 @@ div.contact {
         -moz-transition: top .3s ease,opacity .3s ease;
         -ms-transition: top .3s ease,opacity .3s ease;
         transition: top .3s ease,opacity .3s ease;
+        &.active {
+          color: @darkBlue;
+          opacity: 1;
+          top: 0em;
+        }
       }
     }
   }

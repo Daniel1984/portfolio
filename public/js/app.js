@@ -1,5 +1,35 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);throw new Error("Cannot find module '"+o+"'")}var f=n[o]={exports:{}};t[o][0].call(f.exports,function(e){var n=t[o][1][e];return s(n?n:e)},f,f.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 (function() {
+  'use strict';
+
+  module.exports = function() {
+    var _this = this;
+
+    this.name = m.prop('');
+    this.email = m.prop('');
+    this.message = m.prop('');
+    
+    this.submit = function(e) {
+      e.preventDefault();
+      console.log('submitting - ', _this.name());
+    };
+
+    this.onInputKeyUp = function(e) {
+      var elName = e.currentTarget.getAttribute('name') ;
+      var elLabel = document.querySelector('label.' + elName);
+      if(e.currentTarget.value !== '') {
+        elLabel.classList.add('active');
+      } else {
+        elLabel.classList.remove('active');
+      }
+    };
+
+  };
+
+})();
+
+},{}],2:[function(require,module,exports){
+(function() {
   "use strict";
 
   var m = require('mithril');
@@ -19,7 +49,7 @@
 
 })();
 
-},{"./modules/contact":2,"./modules/experience":3,"./modules/intro":4,"./modules/navbar":5,"./modules/portfolio":6,"./modules/skills":7,"mithril":14}],2:[function(require,module,exports){
+},{"./modules/contact":3,"./modules/experience":4,"./modules/intro":5,"./modules/navbar":6,"./modules/portfolio":7,"./modules/skills":8,"mithril":15}],3:[function(require,module,exports){
 (function() {
   'use strict'; 
 
@@ -27,7 +57,7 @@
     
     model: function() {},
 
-    controller: function() {},
+    controller: require('../controllers/contact_controller'),
 
     view: function(ctrl) { return require('../views/contact')(ctrl); }
 
@@ -35,7 +65,7 @@
 
 })();
 
-},{"../views/contact":8}],3:[function(require,module,exports){
+},{"../controllers/contact_controller":1,"../views/contact":9}],4:[function(require,module,exports){
 (function() {
   'use strict'; 
 
@@ -51,7 +81,7 @@
 
 })();
 
-},{"../views/experience":9}],4:[function(require,module,exports){
+},{"../views/experience":10}],5:[function(require,module,exports){
 (function() {
   'use strict';
 
@@ -67,7 +97,7 @@
 
 })();
 
-},{"../views/intro":10}],5:[function(require,module,exports){
+},{"../views/intro":11}],6:[function(require,module,exports){
 (function() {
   'use strict';
 
@@ -83,7 +113,7 @@
 
 })();
 
-},{"../views/navbar":11}],6:[function(require,module,exports){
+},{"../views/navbar":12}],7:[function(require,module,exports){
 (function() {
   'use strict';
 
@@ -99,7 +129,7 @@
 
 })();
 
-},{"../views/portfolio":12}],7:[function(require,module,exports){
+},{"../views/portfolio":13}],8:[function(require,module,exports){
 (function() {
   'use strict';
 
@@ -115,7 +145,7 @@
 
 })();
 
-},{"../views/skills":13}],8:[function(require,module,exports){
+},{"../views/skills":14}],9:[function(require,module,exports){
 (function() {
   'use strict';
 
@@ -130,19 +160,34 @@
       m('div.col-xs-12.col-sm-8.col-md-8.col-lg-8.col-sm-offset-2.col-md-offset-2.col-lg-offset-2', [
         m('form', [
           m('div.form-group', [
-            m('label', 'Name'),
-            m("input.form-control[type='text'] [placeholder='Name']")
+            m('label.name', 'Name'),
+            m("input.form-control[type='text'][placeholder='Name'][name='name']",
+              { 
+                onchange: m.withAttr("value", ctrl.name),
+                onkeyup: ctrl.onInputKeyUp
+              }  
+            )
           ]),
           m('div.form-group', [
-            m('label', 'Email Address'),
-            m("input.form-control[type='email'] [placeholder='Email Address']")
+            m('label.email', 'Email Address'),
+            m("input.form-control[type='email'][placeholder='Email Address'][name='email']",
+              { 
+                onchange: m.withAttr("value", ctrl.email),
+                onkeyup: ctrl.onInputKeyUp
+              }  
+            )
           ]),
           m('div.form-group', [
-            m('label', 'Message'),
-            m("textarea.form-control [placeholder='Message'] [rows='4']")
+            m('label.message', 'Message'),
+            m("textarea.form-control[placeholder='Message'][rows='4'][name='message']",
+              { 
+                onchange: m.withAttr("value", ctrl.email),
+                onkeyup: ctrl.onInputKeyUp
+              }  
+            )
           ]),
           m('div.form-group', [
-            m("button.btn.btn-lg.btn-success.pull-left [type='submit']", 'Send')
+            m("button.btn.btn-lg.btn-success.pull-left.btn-outline[type='submit']", { onclick: ctrl.submit }, 'Send')
           ])
         ])
       ])
@@ -151,7 +196,7 @@
 
 })();
 
-},{"mithril":14}],9:[function(require,module,exports){
+},{"mithril":15}],10:[function(require,module,exports){
 (function() {
   'use strict';
 
@@ -162,32 +207,54 @@
       m('h1', 'Experience'),
       m('hr.star-light'),
       m('div.experience-content', [
+
         m('blockquote', [
-          m('h3', 'Front-end developer at Same System (Vilnius Lithuania)'),
-          m('p', 'Porting native mobile app to cordova. Using Backbone.js, vanilla js, CSS3, HTML5, unit tests with mocha.js, chai.js and karma test runner, automating develoment process with gulp.js.'),
+          m('h3', 'Front-end developer at Same System (Vilnius, Lithuania)'),
+          m('p', 'Porting native mobile app to cordova. Using Backbone.js, CSS3, HTML5, unit tests with mocha.js, chai.js and karma test runner, automating develoment process with gulp.js.'),
           m('footer', '2014 Feb - now')
         ]),
 
         m('blockquote', [
           m('h3', 'Front-end software developer at NECOLT (Vilnius, Lithuania)'),
-          m('p', 'Building complex web apps with Ruby On Rails, Backbone.js, HTML5, CSS3. Publicly accessible project: '),
-          m("a[href='https://physitrack.com']", 'https://physitrack.com'),
+          m('p', [
+            'Building complex, interactive web apps with Ruby On Rails, Backbone.js, HTML5, CSS3. Publicly accessible project can be found: ',
+            m("a[href='https://physitrack.com'][target='_blank']", 'here'),
+          ]),
           m('footer', '2013 April - 2014 February')
+        ]),
+
+        m('blockquote', [
+          m('h3', 'Full stack software developer at Little Star Media Ltd. (London, UK)'),
+          m('p', [
+            'Building large scale SOA architecture using Mongodb and Postgresql for data storage, Ruby On Rails for back-end services management, Node.js as orchestra layer to communicate between services and Backbone.js for front-end code (JavaScript/coffeescript) organization. Publicly accessible project can be found: ',
+            m("a[href='https://www.starslotcity.com'][target='_blank']", 'here'),
+          ]),
+          m('footer', '2010 August - 2013 April')
+        ]),
+
+        m('blockquote', [
+          m('h3', 'Freelance Flash, ActionScript3 developer.'),
+          m('p', [
+            'Flash animations, banner advertisement, web apps, games etc. Some samples can be seen: ',
+            m("a[href='https://www.youtube.com/watch?v=D1hfwQNDDns'][target='_blank']", 'here'),
+          ]),
+          m('footer', '2008 - 2010')
         ])
+        
       ])
     ]);
   };
 
 })();
 
-},{"mithril":14}],10:[function(require,module,exports){
+},{"mithril":15}],11:[function(require,module,exports){
 (function() {
   'use strict';
 
   var m = require('mithril');
 
   module.exports = function(ctrl) {
-    return m("div.intro.container", [
+    return m("div.intro.row-fluid", [
       m('div.pic.col-xs-12.col-sm-4.col-md-4.col-lg-4.col-sm-offset-4.col-md-offset-4.col-lg-offset-4', [
         m("img[src='/img/me.png']")
       ]),
@@ -201,7 +268,7 @@
 
 })();
 
-},{"mithril":14}],11:[function(require,module,exports){
+},{"mithril":15}],12:[function(require,module,exports){
 (function() {
   'use strict';
 
@@ -235,7 +302,7 @@
 
 })();
 
-},{"mithril":14}],12:[function(require,module,exports){
+},{"mithril":15}],13:[function(require,module,exports){
 (function() {
   'use strict';
 
@@ -252,7 +319,7 @@
 
 })();
 
-},{"mithril":14}],13:[function(require,module,exports){
+},{"mithril":15}],14:[function(require,module,exports){
 (function() {
   'use strict';
 
@@ -269,7 +336,7 @@
 
 })();
 
-},{"mithril":14}],14:[function(require,module,exports){
+},{"mithril":15}],15:[function(require,module,exports){
 Mithril = m = new function app(window) {
 	var selectorCache = {}
 	var type = {}.toString
@@ -893,4 +960,4 @@ if (typeof define == "function" && define.amd) define(function() {return m})
 
 ;;;
 
-},{}]},{},[1])
+},{}]},{},[2])
