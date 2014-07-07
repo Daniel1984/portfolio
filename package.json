@@ -19,6 +19,7 @@
     "npm": "1.4.x"
   },
   "devDependencies": {
+    "PhysicsJS": "git://github.com/wellcaffeinated/PhysicsJS",
     "bootstrap": "git://github.com/twbs/bootstrap.git",
     "gulp": "^3.8.1",
     "gulp-browserify": "^0.5.0",
