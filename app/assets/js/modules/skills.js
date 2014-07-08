@@ -5,9 +5,9 @@
 
     model: function() {},
 
-    controller: require('../controllers/skills_controller'),
+    view: function(ctrl) { return require('../views/skills')(ctrl); },
 
-    view: function(ctrl) { return require('../views/skills')(ctrl); }
+    controller: require('../controllers/skills_controller')
 
   };
 

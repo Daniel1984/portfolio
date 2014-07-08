@@ -1,7 +1,11 @@
 (function() {
   'use strict';
-  
+
+  var Physics = require('PhysicsJS');
+
   module.exports = function() {
+    var _this = this;
+
     this.imagesList = [
       'node',
       'angular',
@@ -20,7 +24,15 @@
       'gulp'
     ];
 
-  };
+    this.isReady = function(el, init, $scope) {
+      if(!init) return;
+      _this.initPhysics();
+    };
 
+    this.initPhysics = function() {
+
+    };
+
+  };
 })();
 
