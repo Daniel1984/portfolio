@@ -30,6 +30,34 @@
 
 },{}],2:[function(require,module,exports){
 (function() {
+  'use strict';
+  
+  module.exports = function() {
+    this.imagesList = [
+      'node',
+      'angular',
+      'backbone',
+      'bower',
+      'browserify',
+      'chai',
+      'cordova',
+      'grunt',
+      'jasmine',
+      'mithril',
+      'moca',
+      'require',
+      'html5',
+      'css3',
+      'gulp'
+    ];
+
+  };
+
+})();
+
+
+},{}],3:[function(require,module,exports){
+(function() {
   "use strict";
 
   var m = require('mithril');
@@ -49,7 +77,7 @@
 
 })();
 
-},{"./modules/contact":3,"./modules/experience":4,"./modules/intro":5,"./modules/navbar":6,"./modules/portfolio":7,"./modules/skills":8,"mithril":15}],3:[function(require,module,exports){
+},{"./modules/contact":4,"./modules/experience":5,"./modules/intro":6,"./modules/navbar":7,"./modules/portfolio":8,"./modules/skills":9,"mithril":16}],4:[function(require,module,exports){
 (function() {
   'use strict'; 
 
@@ -65,7 +93,7 @@
 
 })();
 
-},{"../controllers/contact_controller":1,"../views/contact":9}],4:[function(require,module,exports){
+},{"../controllers/contact_controller":1,"../views/contact":10}],5:[function(require,module,exports){
 (function() {
   'use strict'; 
 
@@ -81,7 +109,7 @@
 
 })();
 
-},{"../views/experience":10}],5:[function(require,module,exports){
+},{"../views/experience":11}],6:[function(require,module,exports){
 (function() {
   'use strict';
 
@@ -97,7 +125,7 @@
 
 })();
 
-},{"../views/intro":11}],6:[function(require,module,exports){
+},{"../views/intro":12}],7:[function(require,module,exports){
 (function() {
   'use strict';
 
@@ -113,7 +141,7 @@
 
 })();
 
-},{"../views/navbar":12}],7:[function(require,module,exports){
+},{"../views/navbar":13}],8:[function(require,module,exports){
 (function() {
   'use strict';
 
@@ -129,7 +157,7 @@
 
 })();
 
-},{"../views/portfolio":13}],8:[function(require,module,exports){
+},{"../views/portfolio":14}],9:[function(require,module,exports){
 (function() {
   'use strict';
 
@@ -137,7 +165,7 @@
 
     model: function() {},
 
-    controller: function() {},
+    controller: require('../controllers/skills_controller'),
 
     view: function(ctrl) { return require('../views/skills')(ctrl); }
 
@@ -145,7 +173,7 @@
 
 })();
 
-},{"../views/skills":14}],9:[function(require,module,exports){
+},{"../controllers/skills_controller":2,"../views/skills":15}],10:[function(require,module,exports){
 (function() {
   'use strict';
 
@@ -196,7 +224,7 @@
 
 })();
 
-},{"mithril":15}],10:[function(require,module,exports){
+},{"mithril":16}],11:[function(require,module,exports){
 (function() {
   'use strict';
 
@@ -247,7 +275,7 @@
 
 })();
 
-},{"mithril":15}],11:[function(require,module,exports){
+},{"mithril":16}],12:[function(require,module,exports){
 (function() {
   'use strict';
 
@@ -268,7 +296,7 @@
 
 })();
 
-},{"mithril":15}],12:[function(require,module,exports){
+},{"mithril":16}],13:[function(require,module,exports){
 (function() {
   'use strict';
 
@@ -302,7 +330,7 @@
 
 })();
 
-},{"mithril":15}],13:[function(require,module,exports){
+},{"mithril":16}],14:[function(require,module,exports){
 (function() {
   'use strict';
 
@@ -319,37 +347,27 @@
 
 })();
 
-},{"mithril":15}],14:[function(require,module,exports){
+},{"mithril":16}],15:[function(require,module,exports){
 (function() {
   'use strict';
 
   var m = require('mithril'); 
 
   module.exports = function(ctrl) {
-    return m("div.skills.row-fluid", [
+    var view = m("div.skills.row-fluid", [
       m('div.logo-container', [
-        m("img.physics[src='/img/logo/node.png']"),
-        m("img.physics[src='/img/logo/angular.png']"),
-        m("img.physics[src='/img/logo/backbone.png']"),
-        m("img.physics[src='/img/logo/bower.png']"),
-        m("img.physics[src='/img/logo/browserify.png']"),
-        m("img.physics[src='/img/logo/chai.png']"),
-        m("img.physics[src='/img/logo/cordova.png']"),
-        m("img.physics[src='/img/logo/grunt.png']"),
-        m("img.physics[src='/img/logo/jasmine.png']"),
-        m("img.physics[src='/img/logo/mithril.jpg']"),
-        m("img.physics[src='/img/logo/moca.png']"),
-        m("img.physics[src='/img/logo/require.png']"),
-        m("img.physics[src='/img/logo/html5.png']"),
-        m("img.physics[src='/img/logo/gulp.png']"),
-        m("img.physics[src='/img/logo/css3.png']")
+        ctrl.imagesList.map(function(img, i) {
+          return m("img.physics[src='/img/logo/" + img + ".png']");
+        })
       ])
     ]);
+
+    return view;
   };
 
 })();
 
-},{"mithril":15}],15:[function(require,module,exports){
+},{"mithril":16}],16:[function(require,module,exports){
 Mithril = m = new function app(window) {
 	var selectorCache = {}
 	var type = {}.toString
@@ -973,4 +991,4 @@ if (typeof define == "function" && define.amd) define(function() {return m})
 
 ;;;
 
-},{}]},{},[2])
+},{}]},{},[3])
