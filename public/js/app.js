@@ -89,7 +89,7 @@
 })();
 
 
-},{"PhysicsJS":19}],5:[function(require,module,exports){
+},{"PhysicsJS":26}],5:[function(require,module,exports){
 (function() {
   "use strict";
 
@@ -111,7 +111,7 @@
 
 })();
 
-},{"./modules/contact":6,"./modules/experience":7,"./modules/intro":8,"./modules/navbar":9,"./modules/portfolio":10,"./modules/portfolio_item":11,"./modules/skills":12,"mithril":20}],6:[function(require,module,exports){
+},{"./modules/contact":6,"./modules/experience":7,"./modules/intro":8,"./modules/navbar":9,"./modules/portfolio":10,"./modules/portfolio_item":11,"./modules/skills":12,"mithril":27}],6:[function(require,module,exports){
 (function() {
   'use strict'; 
 
@@ -196,6 +196,15 @@
   'use strict';
   
   var m = require('mithril');
+  var views = {
+        pt: require('../views/portfolio/pt'),
+        casino: require('../views/portfolio/casino'),
+        orbit: require('../views/portfolio/orbit'),
+        plane: require('../views/portfolio/plane'),
+        slot: require('../views/portfolio/slot'),
+        ss: require('../views/portfolio/ss'),
+        ssc: require('../views/portfolio/ssc')
+      };
 
   module.exports = {
 
@@ -203,15 +212,13 @@
 
     controller: require('../controllers/portfolio_item_controller'),
 
-    view: function(ctrl) { 
-      return require('../views/portfolio/' + m.route.param('view'))(ctrl); 
-    }
+    view: function(ctrl) { return views[m.route.param('view')](ctrl); }
 
   };
 
 })();
 
-},{"../controllers/portfolio_item_controller":3,"mithril":20}],12:[function(require,module,exports){
+},{"../controllers/portfolio_item_controller":3,"../views/portfolio/casino":18,"../views/portfolio/orbit":19,"../views/portfolio/plane":20,"../views/portfolio/pt":21,"../views/portfolio/slot":22,"../views/portfolio/ss":23,"../views/portfolio/ssc":24,"mithril":27}],12:[function(require,module,exports){
 (function() {
   'use strict';
 
@@ -227,7 +234,7 @@
 
 })();
 
-},{"../controllers/skills_controller":4,"../views/skills":18}],13:[function(require,module,exports){
+},{"../controllers/skills_controller":4,"../views/skills":25}],13:[function(require,module,exports){
 (function() {
   'use strict';
 
@@ -278,7 +285,7 @@
 
 })();
 
-},{"mithril":20}],14:[function(require,module,exports){
+},{"mithril":27}],14:[function(require,module,exports){
 (function() {
   'use strict';
 
@@ -329,7 +336,7 @@
 
 })();
 
-},{"mithril":20}],15:[function(require,module,exports){
+},{"mithril":27}],15:[function(require,module,exports){
 (function() {
   'use strict';
 
@@ -350,7 +357,7 @@
 
 })();
 
-},{"mithril":20}],16:[function(require,module,exports){
+},{"mithril":27}],16:[function(require,module,exports){
 (function() {
   'use strict';
 
@@ -384,7 +391,7 @@
 
 })();
 
-},{"mithril":20}],17:[function(require,module,exports){
+},{"mithril":27}],17:[function(require,module,exports){
 (function() {
   'use strict';
 
@@ -413,7 +420,31 @@
 
 })();
 
-},{"mithril":20}],18:[function(require,module,exports){
+},{"mithril":27}],18:[function(require,module,exports){
+(function() {
+  'use strict';
+
+  var m = require('mithril');
+
+  module.exports = function(ctrl) {
+    return m('div');
+  };
+
+})();
+
+},{"mithril":27}],19:[function(require,module,exports){
+module.exports=require(18)
+},{"mithril":27}],20:[function(require,module,exports){
+module.exports=require(18)
+},{"mithril":27}],21:[function(require,module,exports){
+module.exports=require(18)
+},{"mithril":27}],22:[function(require,module,exports){
+module.exports=require(18)
+},{"mithril":27}],23:[function(require,module,exports){
+module.exports=require(18)
+},{"mithril":27}],24:[function(require,module,exports){
+module.exports=require(18)
+},{"mithril":27}],25:[function(require,module,exports){
 (function() {
   'use strict';
 
@@ -433,7 +464,7 @@
 
 })();
 
-},{"mithril":20}],19:[function(require,module,exports){
+},{"mithril":27}],26:[function(require,module,exports){
 /**
  * PhysicsJS v0.6.0 - 2014-04-22
  * A modular, extendable, and easy-to-use physics engine for javascript
@@ -10502,7 +10533,7 @@ Physics.renderer('pixi', function( parent ){
 
 return Physics;
 }));
-},{}],20:[function(require,module,exports){
+},{}],27:[function(require,module,exports){
 Mithril = m = new function app(window) {
 	var selectorCache = {}
 	var type = {}.toString
