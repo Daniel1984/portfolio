@@ -32,6 +32,27 @@
 (function() {
   'use strict';
 
+  module.exports = function() {
+    this.portfolio_items = ['ssc','pt','ss','plane','slot','orbit','casino'];
+  };
+
+})();
+
+},{}],3:[function(require,module,exports){
+(function() {
+  'use strict';
+
+
+  module.exports = function() {
+    this.portfolio_items = ['ssc','pt','ss','plane','slot','orbit','casino'];
+  };
+
+})();
+
+},{}],4:[function(require,module,exports){
+(function() {
+  'use strict';
+
   var Physics = require('PhysicsJS');
 
   module.exports = function() {
@@ -68,7 +89,7 @@
 })();
 
 
-},{"PhysicsJS":16}],3:[function(require,module,exports){
+},{"PhysicsJS":19}],5:[function(require,module,exports){
 (function() {
   "use strict";
 
@@ -77,11 +98,12 @@
   window.onload = function() {
     m.route.mode = 'hash';
     m.route(document.querySelector('.ui-router'), '/', {
-      '/'          : require('./modules/intro'),
-      '/portfolio' : require('./modules/portfolio'),
-      '/skills'    : require('./modules/skills'),
-      '/experience': require('./modules/experience'),
-      '/contact'   : require('./modules/contact')
+      '/'                : require('./modules/intro'),
+      '/portfolio'       : require('./modules/portfolio'),
+      '/portfolio/:view' : require('./modules/portfolio_item'),
+      '/skills'          : require('./modules/skills'),
+      '/experience'      : require('./modules/experience'),
+      '/contact'         : require('./modules/contact')
     });
     
     m.module(document.querySelector('.navbar-section'), require('./modules/navbar'));
@@ -89,7 +111,7 @@
 
 })();
 
-},{"./modules/contact":4,"./modules/experience":5,"./modules/intro":6,"./modules/navbar":7,"./modules/portfolio":8,"./modules/skills":9,"mithril":17}],4:[function(require,module,exports){
+},{"./modules/contact":6,"./modules/experience":7,"./modules/intro":8,"./modules/navbar":9,"./modules/portfolio":10,"./modules/portfolio_item":11,"./modules/skills":12,"mithril":20}],6:[function(require,module,exports){
 (function() {
   'use strict'; 
 
@@ -105,7 +127,7 @@
 
 })();
 
-},{"../controllers/contact_controller":1,"../views/contact":10}],5:[function(require,module,exports){
+},{"../controllers/contact_controller":1,"../views/contact":13}],7:[function(require,module,exports){
 (function() {
   'use strict'; 
 
@@ -121,7 +143,7 @@
 
 })();
 
-},{"../views/experience":11}],6:[function(require,module,exports){
+},{"../views/experience":14}],8:[function(require,module,exports){
 (function() {
   'use strict';
 
@@ -137,7 +159,7 @@
 
 })();
 
-},{"../views/intro":12}],7:[function(require,module,exports){
+},{"../views/intro":15}],9:[function(require,module,exports){
 (function() {
   'use strict';
 
@@ -153,7 +175,7 @@
 
 })();
 
-},{"../views/navbar":13}],8:[function(require,module,exports){
+},{"../views/navbar":16}],10:[function(require,module,exports){
 (function() {
   'use strict';
 
@@ -161,7 +183,7 @@
 
     model: function() {},
 
-    controller: function() {},
+    controller: require('../controllers/portfolio_controller'),
 
     view: function(ctrl) { return require('../views/portfolio')(ctrl); }
 
@@ -169,7 +191,27 @@
 
 })();
 
-},{"../views/portfolio":14}],9:[function(require,module,exports){
+},{"../controllers/portfolio_controller":2,"../views/portfolio":17}],11:[function(require,module,exports){
+(function() {
+  'use strict';
+  
+  var m = require('mithril');
+
+  module.exports = {
+
+    model: function() {},
+
+    controller: require('../controllers/portfolio_item_controller'),
+
+    view: function(ctrl) { 
+      return require('../views/portfolio/' + m.route.param('view'))(ctrl); 
+    }
+
+  };
+
+})();
+
+},{"../controllers/portfolio_item_controller":3,"mithril":20}],12:[function(require,module,exports){
 (function() {
   'use strict';
 
@@ -185,7 +227,7 @@
 
 })();
 
-},{"../controllers/skills_controller":2,"../views/skills":15}],10:[function(require,module,exports){
+},{"../controllers/skills_controller":4,"../views/skills":18}],13:[function(require,module,exports){
 (function() {
   'use strict';
 
@@ -236,7 +278,7 @@
 
 })();
 
-},{"mithril":17}],11:[function(require,module,exports){
+},{"mithril":20}],14:[function(require,module,exports){
 (function() {
   'use strict';
 
@@ -287,7 +329,7 @@
 
 })();
 
-},{"mithril":17}],12:[function(require,module,exports){
+},{"mithril":20}],15:[function(require,module,exports){
 (function() {
   'use strict';
 
@@ -308,7 +350,7 @@
 
 })();
 
-},{"mithril":17}],13:[function(require,module,exports){
+},{"mithril":20}],16:[function(require,module,exports){
 (function() {
   'use strict';
 
@@ -342,7 +384,7 @@
 
 })();
 
-},{"mithril":17}],14:[function(require,module,exports){
+},{"mithril":20}],17:[function(require,module,exports){
 (function() {
   'use strict';
 
@@ -354,72 +396,24 @@
         m('h1', 'Portfolio'),
         m('hr.star-light')
       ]),
-      m('div.col-sm-4.portfolio-item', [
-        m("a.portfolio-link[href='/#/star_slot_city']", [
-          m('div.caption', [
-            m('div.caption-content', [
-              m('i.fa.fa-search-plus.fa-3x')
-            ])
-          ]),
-          m("img[src='/img/portfolio/ssc.png']")
-        ])
-      ]),
-      m('div.col-sm-4.portfolio-item', [
-        m("a.portfolio-link[href='/#/pt']", [
-          m('div.caption', [
-            m('div.caption-content', [
-              m('i.fa.fa-search-plus.fa-3x')
-            ])
-          ]),
-          m("img[src='/img/portfolio/pt.png']")
-        ])
-      ]),
-      m('div.col-sm-4.portfolio-item', [
-        m("a.portfolio-link[href='/#/ss']", [
-          m('div.caption', [
-            m('div.caption-content', [
-              m('i.fa.fa-search-plus.fa-3x')
-            ])
-          ]),
-          m("img[src='/img/portfolio/ss.png']")
-        ])
-      ]),
-      m('div.col-sm-4.portfolio-item', [
-        m("a.portfolio-link[href='/#/ss']", [
-          m('div.caption', [
-            m('div.caption-content', [
-              m('i.fa.fa-search-plus.fa-3x')
-            ])
-          ]),
-          m("img[src='/img/portfolio/plane.png']")
-        ])
-      ]),
-      m('div.col-sm-4.portfolio-item', [
-        m("a.portfolio-link[href='/#/ss']", [
-          m('div.caption', [
-            m('div.caption-content', [
-              m('i.fa.fa-search-plus.fa-3x')
-            ])
-          ]),
-          m("img[src='/img/portfolio/slot.png']")
-        ])
-      ]),
-      m('div.col-sm-4.portfolio-item', [
-        m("a.portfolio-link[href='/#/ss']", [
-          m('div.caption', [
-            m('div.caption-content', [
-              m('i.fa.fa-search-plus.fa-3x')
-            ])
-          ]),
-          m("img[src='/img/portfolio/orbit.png']")
-        ])
-      ])
+      ctrl.portfolio_items.map(function(item, i) {
+        return m('div.col-sm-4.portfolio-item', [
+          m("a.portfolio-link[href='/#/portfolio/" + item + "']", [
+            m('div.caption', [
+              m('div.caption-content', [
+                m('i.fa.fa-search-plus.fa-3x')
+              ])
+            ]),
+            m("img[src='/img/portfolio/" + item + ".png']")
+          ])
+        ]);
+      })
     ]);
   };
 
 })();
 
-},{"mithril":17}],15:[function(require,module,exports){
+},{"mithril":20}],18:[function(require,module,exports){
 (function() {
   'use strict';
 
@@ -439,7 +433,7 @@
 
 })();
 
-},{"mithril":17}],16:[function(require,module,exports){
+},{"mithril":20}],19:[function(require,module,exports){
 /**
  * PhysicsJS v0.6.0 - 2014-04-22
  * A modular, extendable, and easy-to-use physics engine for javascript
@@ -10508,7 +10502,7 @@ Physics.renderer('pixi', function( parent ){
 
 return Physics;
 }));
-},{}],17:[function(require,module,exports){
+},{}],20:[function(require,module,exports){
 Mithril = m = new function app(window) {
 	var selectorCache = {}
 	var type = {}.toString
@@ -11132,4 +11126,4 @@ if (typeof define == "function" && define.amd) define(function() {return m})
 
 ;;;
 
-},{}]},{},[3])
+},{}]},{},[5])
