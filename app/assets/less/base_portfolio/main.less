@@ -1,0 +1,44 @@
+.portfolio-item-inner {
+  padding-top: 100px;
+  text-align: center;
+  height: 100%;
+  overflow-x: hide;
+  overflow-y: auto;
+  background: @navGreen; 
+  h1 { 
+    font-family: 'Lobster', cursive;
+    font-size: 40px;
+  }
+  h1, input, textarea, blockquote, p {
+    text-shadow: 1px 1px 1px rgba(0,0,0,0.2);
+    color: #fff;
+  }
+  hr.star-light { border-color: #fff; }
+  img { 
+    max-width: 100%; 
+    padding: 5px;
+    background-color: @darkBlue;
+  }
+  div.content {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    text-align: left;
+    font-size: 17px;
+    blockquote {
+      border-left: 5px solid @darkBlue;
+      padding: 0 0 0 15px;
+      margin: 0 0 20px;
+      color: #fff;
+      h4 {
+        font-size: 20px;
+        font-weight: 700;
+      }
+    }
+    p { color: #fff; }
+    a { color: @darkBlue; }
+    span.label {
+      margin-left: 5px;
+      display: inline-block;
+    }
+  }
+} 

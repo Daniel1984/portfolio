@@ -242,7 +242,7 @@
 
   module.exports = function(ctrl) {
     return m("div.contact.row-fluid", [
-      m('div.abuot-header', [
+      m('div.contact-header', [
         m('h1', 'Contact me'),
         m('hr.star-light')
       ]),
@@ -427,23 +427,287 @@
   var m = require('mithril');
 
   module.exports = function(ctrl) {
-    return m('div');
+    return m('div.pt.portfolio-item-inner.row', [
+      m('div.header', [
+        m('h1', '3D Room'),
+        m('hr.star-light')
+      ]),
+      m('div.col-xs-12.col-sm-8.col-md-8.col-lg-8.col-sm-offset-2.col-md-offset-2.col-lg-offset-2', [
+        m("img[src='/img/portfolio/casino.png']"),
+        m('div.row.content', [
+          m('div.col-xs-12.col-sm-12.col-md-6.col-lg-6', [
+            m('blockquote', [ m('h4', 'About') ]),
+            m('p', 'Yet another Flash 3D example')
+          ]),
+          m('div.col-xs-12.col-sm-12.col-md-6.col-lg-6', [
+            m('blockquote', [ m('h4', 'Address') ]),
+            m("a[href='/img/3d/index.html'][target='_blank']", 'http://www.3d.com')
+          ]),
+          m('div.col-xs-12.col-sm-12.col-md-12.col-lg-12', [
+            m('blockquote', [ m('h4', 'Tools used') ]),
+            m('span.label.label-danger', 'Flash'),
+            m('span.label.label-danger', 'ActionScript 3.0'),
+            m('span.label.label-danger', 'HTML5')
+          ])
+        ])
+      ])
+    ]);
   };
 
 })();
 
 },{"mithril":27}],19:[function(require,module,exports){
-module.exports=require(18)
+(function() {
+  'use strict';
+
+  var m = require('mithril');
+
+  module.exports = function(ctrl) {
+    return m('div.pt.portfolio-item-inner.row', [
+      m('div.header', [
+        m('h1', 'Orbit'),
+        m('hr.star-light')
+      ]),
+      m('div.col-xs-12.col-sm-8.col-md-8.col-lg-8.col-sm-offset-2.col-md-offset-2.col-lg-offset-2', [
+        m("img[src='/img/portfolio/orbit.png']"),
+        m('div.row.content', [
+          m('div.col-xs-12.col-sm-12.col-md-6.col-lg-6', [
+            m('blockquote', [ m('h4', 'About') ]),
+            m('p', 'One of my first Flash 3D examples')
+          ]),
+          m('div.col-xs-12.col-sm-12.col-md-6.col-lg-6', [
+            m('blockquote', [ m('h4', 'Address') ]),
+            m("a[href='/img/moonwalker/index.html'][target='_blank']", 'http://www.orbit.com')
+          ]),
+          m('div.col-xs-12.col-sm-12.col-md-12.col-lg-12', [
+            m('blockquote', [ m('h4', 'Tools used') ]),
+            m('span.label.label-danger', 'Flash'),
+            m('span.label.label-danger', 'ActionScript 3.0'),
+            m('span.label.label-danger', 'HTML5')
+          ])
+        ])
+      ])
+    ]);
+  };
+
+})();
+
 },{"mithril":27}],20:[function(require,module,exports){
-module.exports=require(18)
+(function() {
+  'use strict';
+
+  var m = require('mithril');
+
+  module.exports = function(ctrl) {
+    return m('div.ssc.portfolio-item-inner.row', [
+      m('div.header', [
+        m('h1', 'Flappy plane'),
+        m('hr.star-light')
+      ]),
+      m('div.col-xs-12.col-sm-8.col-md-8.col-lg-8.col-sm-offset-2.col-md-offset-2.col-lg-offset-2', [
+        m("img[src='/img/portfolio/plane.png']"),
+        m('div.row.content', [
+          m('div.col-xs-12.col-sm-12.col-md-6.col-lg-6', [
+            m('blockquote', [ m('h4', 'About') ]),
+            m('p', 'My first game build with canvas. Automated development process with help of gulp and browserify.')
+          ]),
+          m('div.col-xs-12.col-sm-12.col-md-6.col-lg-6', [
+            m('blockquote', [ m('h4', 'Address') ]),
+            m("a[href='http://plane-flappy.herokuapp.com/'][target='_blank']", 'http://www.flappyplane.com')
+          ]),
+          m('div.col-xs-12.col-sm-12.col-md-12.col-lg-12', [
+            m('blockquote', [ m('h4', 'Tools used') ]),
+            m('span.label.label-danger', 'Backbone.js'),
+            m('span.label.label-danger', 'Browserify'),
+            m('span.label.label-danger', 'Pixi.js'),
+            m('span.label.label-danger', 'Node.js'),
+            m('span.label.label-danger', 'MongoDB'),
+            m('span.label.label-danger', 'Javascript'),
+            m('span.label.label-danger', 'LESS'),
+            m('span.label.label-danger', 'HTML5'),
+            m('span.label.label-danger', 'Github')
+          ])
+        ])
+      ])
+    ]);
+  };
+
+})();
+
 },{"mithril":27}],21:[function(require,module,exports){
-module.exports=require(18)
+(function() {
+  'use strict';
+
+  var m = require('mithril');
+
+  module.exports = function(ctrl) {
+    return m('div.pt.portfolio-item-inner.row', [
+      m('div.header', [
+        m('h1', 'Physitrack'),
+        m('hr.star-light')
+      ]),
+      m('div.col-xs-12.col-sm-8.col-md-8.col-lg-8.col-sm-offset-2.col-md-offset-2.col-lg-offset-2', [
+        m("img[src='/img/portfolio/pt.png']"),
+        m('div.row.content', [
+          m('div.col-xs-12.col-sm-12.col-md-6.col-lg-6', [
+            m('blockquote', [ m('h4', 'About') ]),
+            m('p', 'App build for home exercise prescription. Whole system consists of 5 different types of app: admin app, app for doctors, mobile web app for doctors, app for patiens and its mobile web app version. I was responsible mainly for the front-end logic including desktop and mobile versions. More info can be found on site.')
+          ]),
+          m('div.col-xs-12.col-sm-12.col-md-6.col-lg-6', [
+            m('blockquote', [ m('h4', 'Address') ]),
+            m("a[href='http://www.physitrack.com'][target='_blank']", 'http://www.physitrack.com')
+          ]),
+          m('div.col-xs-12.col-sm-12.col-md-12.col-lg-12', [
+            m('blockquote', [ m('h4', 'Tools used') ]),
+            m('span.label.label-danger', 'Backbone.js'),
+            m('span.label.label-danger', 'Marionette.js'),
+            m('span.label.label-danger', 'Sass'),
+            m('span.label.label-danger', 'Bootstrap'),
+            m('span.label.label-danger', 'Ruby on Rails'),
+            m('span.label.label-danger', 'Msql'),
+            m('span.label.label-danger', 'Capistrano'),
+            m('span.label.label-danger', 'Jenkins'),
+            m('span.label.label-danger', 'Coffeescript'),
+            m('span.label.label-danger', 'Javascript'),
+            m('span.label.label-danger', 'Github')
+          ])
+        ])
+      ])
+    ]);
+  };
+
+})();
+
 },{"mithril":27}],22:[function(require,module,exports){
-module.exports=require(18)
+(function() {
+  'use strict';
+
+  var m = require('mithril');
+
+  module.exports = function(ctrl) {
+    return m('div.pt.portfolio-item-inner.row', [
+      m('div.header', [
+        m('h1', 'Slot machine'),
+        m('hr.star-light')
+      ]),
+      m('div.col-xs-12.col-sm-8.col-md-8.col-lg-8.col-sm-offset-2.col-md-offset-2.col-lg-offset-2', [
+        m("img[src='/img/portfolio/slot.png']"),
+        m('div.row.content', [
+          m('div.col-xs-12.col-sm-12.col-md-6.col-lg-6', [
+            m('blockquote', [ m('h4', 'About') ]),
+            m('p', 'Back from the time when I was playing with flash and ActionScript 3.0. Slot machine with bonus game.')
+          ]),
+          m('div.col-xs-12.col-sm-12.col-md-6.col-lg-6', [
+            m('blockquote', [ m('h4', 'Address') ]),
+            m("a[href='/img/slot/index.html'][target='_blank']", 'http://www.slotmachine.com')
+          ]),
+          m('div.col-xs-12.col-sm-12.col-md-12.col-lg-12', [
+            m('blockquote', [ m('h4', 'Tools used') ]),
+            m('span.label.label-danger', 'Flash'),
+            m('span.label.label-danger', 'ActionScript 3.0'),
+            m('span.label.label-danger', 'HTML5')
+          ])
+        ])
+      ])
+    ]);
+  };
+
+})();
+
 },{"mithril":27}],23:[function(require,module,exports){
-module.exports=require(18)
+(function() {
+  'use strict';
+
+  var m = require('mithril');
+
+  module.exports = function(ctrl) {
+    return m('div.ssc.portfolio-item-inner.row', [
+      m('div.header', [
+        m('h1', 'Same System'),
+        m('hr.star-light')
+      ]),
+      m('div.col-xs-12.col-sm-8.col-md-8.col-lg-8.col-sm-offset-2.col-md-offset-2.col-lg-offset-2', [
+        m("img[src='/img/portfolio/ss.png']"),
+        m('div.row.content', [
+          m('div.col-xs-12.col-sm-12.col-md-6.col-lg-6', [
+            m('blockquote', [ m('h4', 'About') ]),
+            m('p', 'Shop administration application. Porting existing mobile app into cordova using latest HTML5, CSS3 and javascript features.')
+          ]),
+          m('div.col-xs-12.col-sm-12.col-md-6.col-lg-6', [
+            m('blockquote', [ m('h4', 'Address') ]),
+            m("a[href='http://samesystem.com/'][target='_blank']", 'http://www.samesystem.com')
+          ]),
+          m('div.col-xs-12.col-sm-12.col-md-12.col-lg-12', [
+            m('blockquote', [ m('h4', 'Tools used') ]),
+            m('span.label.label-danger', 'Cordova'),
+            m('span.label.label-danger', 'Backbone.js'),
+            m('span.label.label-danger', 'Browserify'),
+            m('span.label.label-danger', 'Mocha'),
+            m('span.label.label-danger', 'Chai'),
+            m('span.label.label-danger', 'Karma'),
+            m('span.label.label-danger', 'Bootstrap'),
+            m('span.label.label-danger', 'Gulp'),
+            m('span.label.label-danger', 'Node.js'),
+            m('span.label.label-danger', 'Javascript'),
+            m('span.label.label-danger', 'LESS'),
+            m('span.label.label-danger', 'HTML5'),
+            m('span.label.label-danger', 'CSS3'),
+            m('span.label.label-danger', 'Github')
+          ])
+        ])
+      ])
+    ]);
+  };
+
+})();
+
 },{"mithril":27}],24:[function(require,module,exports){
-module.exports=require(18)
+(function() {
+  'use strict';
+
+  var m = require('mithril');
+
+  module.exports = function(ctrl) {
+    return m('div.ssc.portfolio-item-inner.row', [
+      m('div.header', [
+        m('h1', 'Star Slot City'),
+        m('hr.star-light')
+      ]),
+      m('div.col-xs-12.col-sm-8.col-md-8.col-lg-8.col-sm-offset-2.col-md-offset-2.col-lg-offset-2', [
+        m("img[src='/img/portfolio/ssc.png']"),
+        m('div.row.content', [
+          m('div.col-xs-12.col-sm-12.col-md-6.col-lg-6', [
+            m('blockquote', [ m('h4', 'About') ]),
+            m('p', 'The online casino. This is one of the first web based, cross platform products working on desktop, tablet and mobile devices build for UK customers. I was responsible for the front as well as back-end of this app.')
+          ]),
+          m('div.col-xs-12.col-sm-12.col-md-6.col-lg-6', [
+            m('blockquote', [ m('h4', 'Address') ]),
+            m("a[href='http://www.starslotcity.com'][target='_blank']", 'http://www.starslotcity.com')
+          ]),
+          m('div.col-xs-12.col-sm-12.col-md-12.col-lg-12', [
+            m('blockquote', [ m('h4', 'Tools used') ]),
+            m('span.label.label-danger', 'Backbone.js'),
+            m('span.label.label-danger', 'Require.js'),
+            m('span.label.label-danger', 'Jasmine'),
+            m('span.label.label-danger', 'Node.js'),
+            m('span.label.label-danger', 'Ruby on Rails'),
+            m('span.label.label-danger', 'MongoDB'),
+            m('span.label.label-danger', 'Postgresql'),
+            m('span.label.label-danger', 'Rspec'),
+            m('span.label.label-danger', 'Puppet'),
+            m('span.label.label-danger', 'Capistrano'),
+            m('span.label.label-danger', 'Jenkins'),
+            m('span.label.label-danger', 'Coffeescript'),
+            m('span.label.label-danger', 'Javascript'),
+            m('span.label.label-danger', 'Github')
+          ])
+        ])
+      ])
+    ]);
+  };
+
+})();
+
 },{"mithril":27}],25:[function(require,module,exports){
 (function() {
   'use strict';

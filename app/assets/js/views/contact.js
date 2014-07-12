@@ -5,7 +5,7 @@
 
   module.exports = function(ctrl) {
     return m("div.contact.row-fluid", [
-      m('div.abuot-header', [
+      m('div.contact-header', [
         m('h1', 'Contact me'),
         m('hr.star-light')
       ]),
