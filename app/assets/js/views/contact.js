@@ -4,7 +4,7 @@
   var m = require('mithril');
 
   module.exports = function(ctrl) {
-    return m("div.contact.row-fluid", [
+    return m("div.contact.row-fluid.fade-out", { config: ctrl.isReady }, [
       m('div.contact-header', [
         m('h1', 'Contact me'),
         m('hr.star-light')

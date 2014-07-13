@@ -33,6 +33,7 @@
     "gulp-util": "^2.2.17",
     "jshint-stylish": "^0.2.0",
     "mithril": "^0.1.16",
+    "modernizr": "git://github.com/Modernizr/Modernizr.git",
     "run-sequence": "^0.3.6"
   }
 }

@@ -1,14 +1,14 @@
 div.skills { 
   padding-top: 100px;
   text-align: center;
+  background: @navGreen;
   height: 100%;
+  overflow-x: hidden;
   overflow-y: auto;
-  div.logo-container {
-    position: absolute;
-    z-index: -1;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
+  transition-duration: 0.3s;
+  &.fade-out {
+    -webkit-transform: scale(0);
+    transform: scale(0);  
+    opacity: 0;
   }
 }

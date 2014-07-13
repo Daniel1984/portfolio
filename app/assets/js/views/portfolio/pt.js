@@ -4,7 +4,7 @@
   var m = require('mithril');
 
   module.exports = function(ctrl) {
-    return m('div.pt.portfolio-item-inner.row', [
+    return m('div.pt.portfolio-item-inner.row.fade-out', { config: ctrl.isReady }, [
       m('div.header', [
         m('h1', 'Physitrack'),
         m('hr.star-light')

@@ -24,13 +24,15 @@
       'gulp'
     ];
 
-    this.isReady = function(el, init, $scope) {
-      if(!init) return;
-      _this.initPhysics();
+    this.onunload = function() { 
+      document.querySelector('.skills').classList.add('fade-out');
     };
 
-    this.initPhysics = function() {
-
+    this.isReady = function(el, init, $scope) { 
+      //if(!init) return; 
+      setTimeout(function() {
+        el.classList.remove('fade-out');
+      }, 300); 
     };
 
   };

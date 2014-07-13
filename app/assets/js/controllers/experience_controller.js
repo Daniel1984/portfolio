@@ -2,10 +2,9 @@
   'use strict';
   
   module.exports = function() {
-    this.portfolio_items = ['ssc','pt','ss','plane','slot','orbit','casino'];
 
     this.onunload = function() { 
-      document.querySelector('.portfolio').classList.add('fade-out');
+      document.querySelector('.experience').classList.add('fade-out');
     };
 
     this.isReady = function(el, init, $scope) { 

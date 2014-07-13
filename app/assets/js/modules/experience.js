@@ -5,7 +5,7 @@
     
     model: function() {},
 
-    controller: function() {},
+    controller: require('../controllers/experience_controller'),
 
     view: function(ctrl) { return require('../views/experience')(ctrl); }
 
