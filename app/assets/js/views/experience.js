@@ -4,7 +4,7 @@
   var m = require('mithril');
 
   module.exports = function(ctrl) {
-    return m("div.experience.row-fluid.fade-out", { config: ctrl.isReady }, [
+    return m("div.experience-p.row-fluid.fade-out", { config: ctrl.isReady }, [
       m('h1', 'Experience'),
       m('hr.star-light'),
       m('div.experience-content', [

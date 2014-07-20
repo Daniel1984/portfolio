@@ -21,7 +21,9 @@
   "devDependencies": {
     "PhysicsJS": "git://github.com/wellcaffeinated/PhysicsJS",
     "bootstrap": "git://github.com/twbs/bootstrap.git",
-    "gulp": "^3.8.1",
+    "box2d": "^1.0.0",
+    "box2dweb": "^2.1.0-b",
+    "gulp": "^3.8.6",
     "gulp-browserify": "^0.5.0",
     "gulp-concat": "^2.2.0",
     "gulp-if": "^1.2.1",
@@ -33,7 +35,7 @@
     "gulp-util": "^2.2.17",
     "jshint-stylish": "^0.2.0",
     "mithril": "^0.1.16",
-    "modernizr": "git://github.com/Modernizr/Modernizr.git",
+    "pleasejs": "git://github.com/Fooidge/PleaseJS",
     "run-sequence": "^0.3.6"
   }
 }

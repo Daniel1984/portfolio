@@ -6,15 +6,8 @@
   window.onload = function() {
     m.route.mode = 'hash';
     m.route(document.querySelector('.ui-router'), '/', {
-      '/'                : require('./modules/intro'),
-      '/portfolio'       : require('./modules/portfolio'),
-      '/portfolio/:view' : require('./modules/portfolio_item'),
-      '/skills'          : require('./modules/skills'),
-      '/experience'      : require('./modules/experience'),
-      '/contact'         : require('./modules/contact')
+      '/': require('./modules/tiles')
     });
-    
-    m.module(document.querySelector('.navbar-section'), require('./modules/navbar'));
   };
 
 })();

@@ -1,8 +1,6 @@
 (function() {
   'use strict';
 
-  var Physics = require('PhysicsJS');
-
   module.exports = function() {
     var _this = this;
 
@@ -29,10 +27,14 @@
     };
 
     this.isReady = function(el, init, $scope) { 
-      //if(!init) return; 
+      if(init) _this.initPhysics(el);
       setTimeout(function() {
         el.classList.remove('fade-out');
       }, 300); 
+    };
+
+    this.initPhysics = function(el) {
+    
     };
 
   };
