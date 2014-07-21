@@ -22,20 +22,20 @@
       'gulp'
     ];
 
-    this.onunload = function() { 
-      document.querySelector('.skills').classList.add('fade-out');
-    };
-
-    this.isReady = function(el, init, $scope) { 
-      if(init) _this.initPhysics(el);
-      setTimeout(function() {
-        el.classList.remove('fade-out');
-      }, 300); 
-    };
-
-    this.initPhysics = function(el) {
-    
-    };
+//    this.onunload = function() { 
+//      document.querySelector('.skills').classList.add('fade-out');
+//    };
+//
+//    this.isReady = function(el, init, $scope) { 
+//      if(init) _this.initPhysics(el);
+//      setTimeout(function() {
+//        el.classList.remove('fade-out');
+//      }, 300); 
+//    };
+//
+//    this.initPhysics = function(el) {
+//    
+//    };
 
   };
 })();

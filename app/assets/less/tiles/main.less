@@ -24,11 +24,11 @@ div.tiles {
     margin: auto;
     overflow: hidden;
     h2 {
-      font-family: 'Lobster', cursive;
+      font-family: 'Ubuntu Condensed', sans-serif;
       color: #333333;
       text-shadow: 1px 1px 1px rgba(0,0,0,0.2);
-      margin-top: 0;
-      margin-bottom: 0;
+      margin-bottom: 0px;
+      margin-top: 0px;
     }
     &.about { 
       border-top: none;
@@ -36,20 +36,13 @@ div.tiles {
       width: 50%;
       height: 50%;
       text-align: center;
-      div.header {
-        height: 60%;
-      }
-      div.body { 
-        height: 40%;
-      }
-      h2 {
-        margin-top: 20px;
-        margin-bottom: 10px;
-      }
+      h2 { margin-top: 20px; }
+      div.header { height: 60%; }
+      div.body { height: 40%; }
       img { max-height: 100%; }
-      div.inner-item { background: #84ffff; }
+      div.inner-item { background: darken(#5fea86, 20%); }
       &:hover{
-        background: darken(#84ffff, 30%)!important;
+        background: darken(#5fea86, 20%)!important;
       }
     }
     &.skills {
@@ -61,7 +54,7 @@ div.tiles {
         text-align: center;
         font-size: 7em;
       }
-      div.inner-item { background: #dda0dd; }
+      div.inner-item { background: darken(#dda0dd, 20%); }
       &:hover{
         background: darken(#dda0dd, 20%)!important;
       }
@@ -75,7 +68,7 @@ div.tiles {
         text-align: center;
         font-size: 7em;
       }
-      div.inner-item { background: #b388ff; }
+      div.inner-item { background: darken(#b388ff, 20%); }
       &:hover{
         background: darken(#b388ff, 20%)!important;
       }
@@ -89,9 +82,9 @@ div.tiles {
         text-align: center;
         font-size: 7em;
       }
-      div.inner-item { background: #ffff8d; }
+      div.inner-item { background: darken(#fada72, 10%); }
       &:hover{
-        background: darken(#ffff8d, 10%)!important;
+        background: darken(#fada72, 10%)!important;
       }
     }
     &.experience {
@@ -102,10 +95,10 @@ div.tiles {
         text-align: center;
         font-size: 7em;
       }
+      div.inner-item { background: darken(#ff8a80, 10%); }
       &:hover{
         background: darken(#ff8a80, 10%)!important;
       }
-      div.inner-item { background: #ff8a80; }
     }
     div.inner-item {
       transition-duration: 0.3s;

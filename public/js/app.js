@@ -1,7 +1,110 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);throw new Error("Cannot find module '"+o+"'")}var f=n[o]={exports:{}};t[o][0].call(f.exports,function(e){var n=t[o][1][e];return s(n?n:e)},f,f.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 (function() {
   'use strict';
+
+  module.exports = function() {
+    var _this = this;
+
+    this.name = m.prop('');
+    this.email = m.prop('');
+    this.message = m.prop('');
+    
+    this.submit = function(e) {
+      e.preventDefault();
+      console.log('submitting - ', _this.name());
+    };
+
+    this.onInputKeyUp = function(e) {
+      var elName = e.currentTarget.getAttribute('name') ;
+      var elLabel = document.querySelector('label.' + elName);
+      if(e.currentTarget.value !== '') {
+        elLabel.classList.add('active');
+      } else {
+        elLabel.classList.remove('active');
+      }
+    };
+
+  };
+
+})();
+
+},{}],2:[function(require,module,exports){
+(function() {
+  'use strict';
   
+  module.exports = function() {
+
+  };
+
+})();
+
+},{}],3:[function(require,module,exports){
+(function() {
+  'use strict';
+  
+  module.exports = function() {
+    this.portfolio_items = ['ssc','pt','ss','plane','slot','orbit','casino'];
+  };
+
+})();
+
+},{}],4:[function(require,module,exports){
+(function() {
+  'use strict';
+
+  module.exports = function() {
+    var _this = this;
+
+    this.imagesList = [
+      'node',
+      'angular',
+      'backbone',
+      'bower',
+      'browserify',
+      'chai',
+      'cordova',
+      'grunt',
+      'jasmine',
+      'mithril',
+      'moca',
+      'require',
+      'html5',
+      'css3',
+      'gulp'
+    ];
+
+//    this.onunload = function() { 
+//      document.querySelector('.skills').classList.add('fade-out');
+//    };
+//
+//    this.isReady = function(el, init, $scope) { 
+//      if(init) _this.initPhysics(el);
+//      setTimeout(function() {
+//        el.classList.remove('fade-out');
+//      }, 300); 
+//    };
+//
+//    this.initPhysics = function(el) {
+//    
+//    };
+
+  };
+})();
+
+
+},{}],5:[function(require,module,exports){
+(function() {
+  'use strict';
+  
+  var modules = {
+    about: require('../modules/intro'),
+    portfolio: require('../modules/portfolio'),
+    skills: require('../modules/skills'),
+    contact: require('../modules/contact'),
+    experience: require('../modules/experience')
+  };
+  var m = require('mithril');
+
   module.exports = function() {
 
     window.onpopstate = function(event) {
@@ -11,14 +114,16 @@
 
     this.onItemClick = function(e) {
       history.pushState(null, null, location.href);
-      e.currentTarget.querySelector('.inner-item').classList.add('animate');
+      var el = e.currentTarget.querySelector('.inner-item');
+      el.classList.add('animate');
+      m.module(el, modules[e.currentTarget.getAttribute('data-module')]);
     };
 
   };
 
 })();
 
-},{}],2:[function(require,module,exports){
+},{"../modules/contact":7,"../modules/experience":8,"../modules/intro":9,"../modules/portfolio":10,"../modules/skills":11,"mithril":19}],6:[function(require,module,exports){
 (function() {
   "use strict";
 
@@ -33,7 +138,87 @@
 
 })();
 
-},{"./modules/tiles":3,"mithril":5}],3:[function(require,module,exports){
+},{"./modules/tiles":12,"mithril":19}],7:[function(require,module,exports){
+(function() {
+  'use strict'; 
+
+  module.exports = {
+    
+    model: function() {},
+
+    controller: require('../controllers/contact_controller'),
+
+    view: function(ctrl) { return require('../views/contact')(ctrl); }
+
+  };
+
+})();
+
+},{"../controllers/contact_controller":1,"../views/contact":13}],8:[function(require,module,exports){
+(function() {
+  'use strict'; 
+
+  module.exports = {
+    
+    model: function() {},
+
+    controller: require('../controllers/experience_controller'),
+
+    view: function(ctrl) { return require('../views/experience')(ctrl); }
+
+  };
+
+})();
+
+},{"../controllers/experience_controller":2,"../views/experience":14}],9:[function(require,module,exports){
+(function() {
+  'use strict';
+
+  module.exports = {
+
+    model: function() {},
+
+    controller: function() {},
+
+    view: function(ctrl) { return require('../views/intro')(ctrl); }
+
+  };
+
+})();
+
+},{"../views/intro":15}],10:[function(require,module,exports){
+(function() {
+  'use strict';
+
+  module.exports = {
+
+    model: function() {},
+
+    controller: require('../controllers/portfolio_controller'),
+
+    view: function(ctrl) { return require('../views/portfolio')(ctrl); }
+
+  };
+
+})();
+
+},{"../controllers/portfolio_controller":3,"../views/portfolio":16}],11:[function(require,module,exports){
+(function() {
+  'use strict';
+
+  module.exports = {
+
+    model: function() {},
+
+    view: function(ctrl) { return require('../views/skills')(ctrl); },
+
+    controller: require('../controllers/skills_controller')
+
+  };
+
+})();
+
+},{"../controllers/skills_controller":4,"../views/skills":17}],12:[function(require,module,exports){
 (function() {
   'use strict';
 
@@ -49,7 +234,177 @@
 
 })(); 
 
-},{"../controllers/tiles_controller":1,"../views/tiles":4}],4:[function(require,module,exports){
+},{"../controllers/tiles_controller":5,"../views/tiles":18}],13:[function(require,module,exports){
+(function() {
+  'use strict';
+
+  var m = require('mithril');
+
+  module.exports = function(ctrl) {
+    return m("div.contact-p.row-fluid.fade-out", { config: ctrl.isReady }, [
+      m('div.contact-header', [
+        m('h1', 'Contact me'),
+        m('hr.star-light')
+      ]),
+      m('div.col-xs-12.col-sm-8.col-md-8.col-lg-8.col-sm-offset-2.col-md-offset-2.col-lg-offset-2', [
+        m('form', [
+          m('div.form-group', [
+            m('label.name', 'Name'),
+            m("input.form-control[type='text'][placeholder='Name'][name='name']",
+              { 
+                onchange: m.withAttr("value", ctrl.name),
+                onkeyup: ctrl.onInputKeyUp
+              }  
+            )
+          ]),
+          m('div.form-group', [
+            m('label.email', 'Email Address'),
+            m("input.form-control[type='email'][placeholder='Email Address'][name='email']",
+              { 
+                onchange: m.withAttr("value", ctrl.email),
+                onkeyup: ctrl.onInputKeyUp
+              }  
+            )
+          ]),
+          m('div.form-group', [
+            m('label.message', 'Message'),
+            m("textarea.form-control[placeholder='Message'][rows='4'][name='message']",
+              { 
+                onchange: m.withAttr("value", ctrl.email),
+                onkeyup: ctrl.onInputKeyUp
+              }  
+            )
+          ]),
+          m('div.form-group', [
+            m("button.btn.btn-lg.btn-success.pull-left.btn-outline[type='submit']", { onclick: ctrl.submit }, 'Send')
+          ])
+        ])
+      ])
+    ]);
+  };
+
+})();
+
+},{"mithril":19}],14:[function(require,module,exports){
+(function() {
+  'use strict';
+
+  var m = require('mithril');
+
+  module.exports = function(ctrl) {
+    return m("div.experience-p.row-fluid.fade-out", { config: ctrl.isReady }, [
+      m('h1', 'Experience'),
+      m('hr.star-light'),
+      m('div.experience-content', [
+
+        m('blockquote', [
+          m('h3', 'Front-end developer at Same System (Vilnius, Lithuania)'),
+          m('p', 'Porting native mobile app to cordova. Using Backbone.js, CSS3, HTML5, unit tests with mocha.js, chai.js and karma test runner, automating develoment process with gulp.js.'),
+          m('footer', '2014 Feb - now')
+        ]),
+
+        m('blockquote', [
+          m('h3', 'Front-end software developer at NECOLT (Vilnius, Lithuania)'),
+          m('p', [
+            'Building complex, interactive web apps with Ruby On Rails, Backbone.js, HTML5, CSS3. Publicly accessible project can be found: ',
+            m("a[href='https://physitrack.com'][target='_blank']", 'here'),
+          ]),
+          m('footer', '2013 April - 2014 February')
+        ]),
+
+        m('blockquote', [
+          m('h3', 'Full stack software developer at Little Star Media Ltd. (London, UK)'),
+          m('p', [
+            'Building large scale SOA architecture using Mongodb and Postgresql for data storage, Ruby On Rails for back-end services management, Node.js as orchestra layer to communicate between services and Backbone.js for front-end code (JavaScript/coffeescript) organization. Publicly accessible project can be found: ',
+            m("a[href='https://www.starslotcity.com'][target='_blank']", 'here'),
+          ]),
+          m('footer', '2010 August - 2013 April')
+        ]),
+
+        m('blockquote', [
+          m('h3', 'Freelance Flash, ActionScript3 developer.'),
+          m('p', [
+            'Flash animations, banner advertisement, web apps, games etc. Some samples can be seen: ',
+            m("a[href='https://www.youtube.com/watch?v=D1hfwQNDDns'][target='_blank']", 'here'),
+          ]),
+          m('footer', '2008 - 2010')
+        ])
+        
+      ])
+    ]);
+  };
+
+})();
+
+},{"mithril":19}],15:[function(require,module,exports){
+(function() {
+  'use strict';
+
+  var m = require('mithril');
+
+  module.exports = function(ctrl) {
+    return m("div.intro-p.row-fluid", [
+      m('div.pic.col-xs-12.col-sm-4.col-md-4.col-lg-4.col-sm-offset-4.col-md-offset-4.col-lg-offset-4', [
+        m("img[src='/img/me.png']")
+      ]),
+      m('div.intro-text', [
+        m('h1', 'Javascript RockStar Developer')
+      ]),
+      m('hr.star-light'),
+      m("a.btn.btn-lg.btn-outline[href='/#/portfolio']", 'Portfolio')
+    ]);
+  };
+
+})();
+
+},{"mithril":19}],16:[function(require,module,exports){
+(function() {
+  'use strict';
+
+  var m = require('mithril');
+
+  module.exports = function(ctrl) {
+    return m("div.portfolio-p.row-fluid.fade-out", { config: ctrl.isReady }, [
+      m('div.portfolio-header', [
+        m('h1', 'Portfolio'),
+        m('hr.star-light')
+      ]),
+      ctrl.portfolio_items.map(function(item, i) {
+        return m('div.col-sm-4.portfolio-item', [
+          m("a.portfolio-link[href='/#/portfolio/" + item + "']", [
+            m('div.caption', [
+              m('div.caption-content', [
+                m('i.fa.fa-search-plus.fa-3x')
+              ])
+            ]),
+            m("img[src='/img/portfolio/" + item + ".png']")
+          ])
+        ]);
+      })
+    ]);
+  };
+
+})();
+
+},{"mithril":19}],17:[function(require,module,exports){
+(function() {
+  'use strict';
+
+  var m = require('mithril'); 
+
+  module.exports = function(ctrl) {
+    var view = m("div.skills-p.row-fluid.fade-out", { config: ctrl.isReady }, [
+      ctrl.imagesList.map(function(img, i) {
+        return m("img.physics [src='/img/logo/" + img + ".png']");
+      })
+    ]);
+
+    return view;
+  };
+
+})();
+
+},{"mithril":19}],18:[function(require,module,exports){
 (function() {
   'use strict';
 
@@ -57,7 +412,7 @@
 
   module.exports = function(ctrl) {
     return m("div.tiles", [
-      m('div.tile-item.about', { style: { background: '#84ffff' }, onclick: ctrl.onItemClick }, [
+      m("div.tile-item.about [data-module='about']", { style: { background: '#5fea86' }, onclick: ctrl.onItemClick }, [
         m('div.header', [
           m("img[src='/img/me.png']")
         ]),
@@ -68,7 +423,7 @@
         m('div.inner-item')
       ]),
 
-      m('div.tile-item.skills', { style: { background: '#dda0dd' }, onclick: ctrl.onItemClick }, [
+      m("div.tile-item.skills [data-module='skills']", { style: { background: '#dda0dd' }, onclick: ctrl.onItemClick }, [
         m('div.body', [
           m('i.fa.fa-magic'),
           m('h2', 'Skills')
@@ -76,7 +431,7 @@
         m('div.inner-item')
       ]),
 
-      m('div.tile-item.portfolio', { style: { background: '#ffff8d' }, onclick: ctrl.onItemClick }, [
+      m("div.tile-item.portfolio [data-module='portfolio']", { style: { background: '#fada72' }, onclick: ctrl.onItemClick }, [
         m('div.body', [
           m('i.fa.fa-suitcase'),
           m('h2', 'Portfolio')
@@ -84,7 +439,7 @@
         m('div.inner-item')
       ]),
 
-      m('div.tile-item.experience', { style: { background: '#ff8a80' }, onclick: ctrl.onItemClick }, [
+      m("div.tile-item.experience [data-module='experience']", { style: { background: '#ff8a80' }, onclick: ctrl.onItemClick }, [
         m('div.body', [
           m('i.fa.fa-clock-o'),
           m('h2', 'Experience')
@@ -92,7 +447,7 @@
         m('div.inner-item')
       ]),
 
-      m('div.tile-item.contact', { style: { background: '#b388ff' }, onclick: ctrl.onItemClick }, [
+      m("div.tile-item.contact [data-module='contact']", { style: { background: '#b388ff' }, onclick: ctrl.onItemClick }, [
         m('div.body', [
           m('i.fa.fa-envelope'),
           m('h2', 'Contact')
@@ -105,7 +460,7 @@
 
 })();
 
-},{"mithril":5}],5:[function(require,module,exports){
+},{"mithril":19}],19:[function(require,module,exports){
 Mithril = m = new function app(window) {
 	var selectorCache = {}
 	var type = {}.toString
@@ -729,4 +1084,4 @@ if (typeof define == "function" && define.amd) define(function() {return m})
 
 ;;;
 
-},{}]},{},[2])
+},{}]},{},[6])

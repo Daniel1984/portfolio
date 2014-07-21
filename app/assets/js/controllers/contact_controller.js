@@ -23,16 +23,6 @@
       }
     };
 
-    this.onunload = function() { 
-      document.querySelector('.contact').classList.add('fade-out');
-    };
-
-    this.isReady = function(el, init, $scope) { 
-      setTimeout(function() {
-        el.classList.remove('fade-out');
-      }, 300); 
-    };
-
   };
 
 })();
