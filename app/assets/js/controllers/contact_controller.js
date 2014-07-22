@@ -8,6 +8,10 @@
     this.email = m.prop('');
     this.message = m.prop('');
     
+    this.hideView = function() {
+      window.history.go(0);
+    };
+
     this.submit = function(e) {
       e.preventDefault();
       console.log('submitting - ', _this.name());

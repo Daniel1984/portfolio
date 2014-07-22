@@ -3,12 +3,30 @@
   'use strict';
 
   module.exports = function() {
+    
+    this.hideView = function() {
+      window.history.go(0);
+    };
+
+  };
+
+})();
+
+},{}],2:[function(require,module,exports){
+(function() {
+  'use strict';
+
+  module.exports = function() {
     var _this = this;
 
     this.name = m.prop('');
     this.email = m.prop('');
     this.message = m.prop('');
     
+    this.hideView = function() {
+      window.history.go(0);
+    };
+
     this.submit = function(e) {
       e.preventDefault();
       console.log('submitting - ', _this.name());
@@ -28,17 +46,21 @@
 
 })();
 
-},{}],2:[function(require,module,exports){
+},{}],3:[function(require,module,exports){
 (function() {
   'use strict';
   
   module.exports = function() {
 
+    this.hideView = function() {
+      window.history.go(0);
+    };
+
   };
 
 })();
 
-},{}],3:[function(require,module,exports){
+},{}],4:[function(require,module,exports){
 (function() {
   'use strict';
   
@@ -48,7 +70,7 @@
 
 })();
 
-},{}],4:[function(require,module,exports){
+},{}],5:[function(require,module,exports){
 (function() {
   'use strict';
 
@@ -92,12 +114,12 @@
 })();
 
 
-},{}],5:[function(require,module,exports){
+},{}],6:[function(require,module,exports){
 (function() {
   'use strict';
   
   var modules = {
-    about: require('../modules/intro'),
+    about: require('../modules/about'),
     portfolio: require('../modules/portfolio'),
     skills: require('../modules/skills'),
     contact: require('../modules/contact'),
@@ -123,7 +145,7 @@
 
 })();
 
-},{"../modules/contact":7,"../modules/experience":8,"../modules/intro":9,"../modules/portfolio":10,"../modules/skills":11,"mithril":19}],6:[function(require,module,exports){
+},{"../modules/about":8,"../modules/contact":9,"../modules/experience":10,"../modules/portfolio":11,"../modules/skills":12,"mithril":20}],7:[function(require,module,exports){
 (function() {
   "use strict";
 
@@ -138,7 +160,23 @@
 
 })();
 
-},{"./modules/tiles":12,"mithril":19}],7:[function(require,module,exports){
+},{"./modules/tiles":13,"mithril":20}],8:[function(require,module,exports){
+(function() {
+  'use strict';
+
+  module.exports = {
+
+    model: function() {},
+
+    controller: require('../controllers/about_controller'),
+
+    view: function(ctrl) { return require('../views/about')(ctrl); }
+
+  };
+
+})();
+
+},{"../controllers/about_controller":1,"../views/about":14}],9:[function(require,module,exports){
 (function() {
   'use strict'; 
 
@@ -154,7 +192,7 @@
 
 })();
 
-},{"../controllers/contact_controller":1,"../views/contact":13}],8:[function(require,module,exports){
+},{"../controllers/contact_controller":2,"../views/contact":15}],10:[function(require,module,exports){
 (function() {
   'use strict'; 
 
@@ -170,23 +208,7 @@
 
 })();
 
-},{"../controllers/experience_controller":2,"../views/experience":14}],9:[function(require,module,exports){
-(function() {
-  'use strict';
-
-  module.exports = {
-
-    model: function() {},
-
-    controller: function() {},
-
-    view: function(ctrl) { return require('../views/intro')(ctrl); }
-
-  };
-
-})();
-
-},{"../views/intro":15}],10:[function(require,module,exports){
+},{"../controllers/experience_controller":3,"../views/experience":16}],11:[function(require,module,exports){
 (function() {
   'use strict';
 
@@ -202,7 +224,7 @@
 
 })();
 
-},{"../controllers/portfolio_controller":3,"../views/portfolio":16}],11:[function(require,module,exports){
+},{"../controllers/portfolio_controller":4,"../views/portfolio":17}],12:[function(require,module,exports){
 (function() {
   'use strict';
 
@@ -218,7 +240,7 @@
 
 })();
 
-},{"../controllers/skills_controller":4,"../views/skills":17}],12:[function(require,module,exports){
+},{"../controllers/skills_controller":5,"../views/skills":18}],13:[function(require,module,exports){
 (function() {
   'use strict';
 
@@ -234,7 +256,33 @@
 
 })(); 
 
-},{"../controllers/tiles_controller":5,"../views/tiles":18}],13:[function(require,module,exports){
+},{"../controllers/tiles_controller":6,"../views/tiles":19}],14:[function(require,module,exports){
+(function() {
+  'use strict';
+
+  var m = require('mithril');
+
+  module.exports = function(ctrl) {
+    return m("div.intro-p.row-fluid", [
+      m('div.pic.col-xs-12.col-sm-4.col-md-4.col-lg-4.col-sm-offset-4.col-md-offset-4.col-lg-offset-4', [
+        m("img[src='/img/me.png']")
+      ]),
+      m('div.intro-text', [
+        m('h1', 'Javascript Developer')
+      ]),
+      m('hr.star-light'),
+      m('div.col-xs-12.col-sm-6.col-md-6.col-lg-6.col-sm-offset-3.col-md-offset-3.col-lg-offset-3', [
+        m('p', 'Welcome to my online portfolio. I\'m a software developer currently based in Lithuania. I specialise in developing fast, web based applications such as SPA (single page applications) and hybrid mobile applications using cutting-edge technologies such as Node.js, Angular, Backbone, Mithril, Cordova and more! Contact me if you are looking for someone to build a project from scratch or help out with existing project.')
+      ]),
+      m('div.close-btn', { onclick: ctrl.hideView },  [
+        m('i.fa.fa-times-circle-o')
+      ])
+    ]);
+  };
+
+})();
+
+},{"mithril":20}],15:[function(require,module,exports){
 (function() {
   'use strict';
 
@@ -242,6 +290,9 @@
 
   module.exports = function(ctrl) {
     return m("div.contact-p.row-fluid.fade-out", { config: ctrl.isReady }, [
+      m('div.back-top-btn', { onclick: ctrl.hideView }, [
+        m('i.fa.fa-long-arrow-left')
+      ]),
       m('div.contact-header', [
         m('h1', 'Contact me'),
         m('hr.star-light')
@@ -285,7 +336,7 @@
 
 })();
 
-},{"mithril":19}],14:[function(require,module,exports){
+},{"mithril":20}],16:[function(require,module,exports){
 (function() {
   'use strict';
 
@@ -293,6 +344,9 @@
 
   module.exports = function(ctrl) {
     return m("div.experience-p.row-fluid.fade-out", { config: ctrl.isReady }, [
+      m('div.back-top-btn', { onclick: ctrl.hideView }, [
+        m('i.fa.fa-long-arrow-left')
+      ]),
       m('h1', 'Experience'),
       m('hr.star-light'),
       m('div.experience-content', [
@@ -336,28 +390,7 @@
 
 })();
 
-},{"mithril":19}],15:[function(require,module,exports){
-(function() {
-  'use strict';
-
-  var m = require('mithril');
-
-  module.exports = function(ctrl) {
-    return m("div.intro-p.row-fluid", [
-      m('div.pic.col-xs-12.col-sm-4.col-md-4.col-lg-4.col-sm-offset-4.col-md-offset-4.col-lg-offset-4', [
-        m("img[src='/img/me.png']")
-      ]),
-      m('div.intro-text', [
-        m('h1', 'Javascript RockStar Developer')
-      ]),
-      m('hr.star-light'),
-      m("a.btn.btn-lg.btn-outline[href='/#/portfolio']", 'Portfolio')
-    ]);
-  };
-
-})();
-
-},{"mithril":19}],16:[function(require,module,exports){
+},{"mithril":20}],17:[function(require,module,exports){
 (function() {
   'use strict';
 
@@ -386,7 +419,7 @@
 
 })();
 
-},{"mithril":19}],17:[function(require,module,exports){
+},{"mithril":20}],18:[function(require,module,exports){
 (function() {
   'use strict';
 
@@ -404,7 +437,7 @@
 
 })();
 
-},{"mithril":19}],18:[function(require,module,exports){
+},{"mithril":20}],19:[function(require,module,exports){
 (function() {
   'use strict';
 
@@ -460,7 +493,7 @@
 
 })();
 
-},{"mithril":19}],19:[function(require,module,exports){
+},{"mithril":20}],20:[function(require,module,exports){
 Mithril = m = new function app(window) {
 	var selectorCache = {}
 	var type = {}.toString
@@ -1084,4 +1117,4 @@ if (typeof define == "function" && define.amd) define(function() {return m})
 
 ;;;
 
-},{}]},{},[6])
+},{}]},{},[7])

@@ -5,6 +5,9 @@
 
   module.exports = function(ctrl) {
     return m("div.experience-p.row-fluid.fade-out", { config: ctrl.isReady }, [
+      m('div.back-top-btn', { onclick: ctrl.hideView }, [
+        m('i.fa.fa-long-arrow-left')
+      ]),
       m('h1', 'Experience'),
       m('hr.star-light'),
       m('div.experience-content', [

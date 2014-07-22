@@ -9,12 +9,18 @@ div.contact-p {
     font-family: 'Ubuntu Condensed', sans-serif;
     font-size: 40px;
   }
-  h1, input, textarea, button {
+  h1, input, textarea, button, i {
     text-shadow: 1px 1px 1px rgba(0,0,0,0.2);
     color: #fff;
   }
-  hr.star-light {
-    border-color: #fff;
+  hr.star-light:after {
+    background-color: darken(#b388ff, 20%);
+  }
+  div.back-top-btn {
+    text-align: left;
+    padding-left: 30px;
+    font-size: 2em;
+    i { cursor: pointer; }
   }
   form {
     margin-top: 20px;

@@ -5,6 +5,9 @@
 
   module.exports = function(ctrl) {
     return m("div.contact-p.row-fluid.fade-out", { config: ctrl.isReady }, [
+      m('div.back-top-btn', { onclick: ctrl.hideView }, [
+        m('i.fa.fa-long-arrow-left')
+      ]),
       m('div.contact-header', [
         m('h1', 'Contact me'),
         m('hr.star-light')

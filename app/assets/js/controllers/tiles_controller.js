@@ -2,7 +2,7 @@
   'use strict';
   
   var modules = {
-    about: require('../modules/intro'),
+    about: require('../modules/about'),
     portfolio: require('../modules/portfolio'),
     skills: require('../modules/skills'),
     contact: require('../modules/contact'),
