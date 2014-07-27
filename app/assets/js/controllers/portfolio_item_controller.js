@@ -2,7 +2,12 @@
   'use strict';
 
   module.exports = function() {
-    this.portfolio_items = ['ssc','pt','ss','plane','slot','orbit','casino'];
+
+    this.fadeOutView = function() {
+      console.log('ssssssssssssssssssssssssss');
+      document.querySelector('.portfolio-renderer').classList.remove('animate');
+    };
+
   };
 
 })();

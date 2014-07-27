@@ -1,5 +1,5 @@
 .portfolio-item-inner {
-  padding-top: 40px;
+  padding-top: 20px;
   text-align: center;
   height: 100%;
   overflow-x: hidden;
@@ -10,6 +10,7 @@
     font-size: 40px;
   }
   h1, input, textarea, blockquote, p {
+    font-family: 'Ubuntu Condensed', sans-serif;
     text-shadow: 1px 1px 1px rgba(0,0,0,0.2);
     color: #fff;
   }
@@ -30,15 +31,22 @@
       margin: 0 0 20px;
       color: #fff;
       h4 {
-        font-size: 20px;
+        font-size: 1.5em;
         font-weight: 700;
       }
     }
-    p { color: #fff; }
-    a { color: @darkBlue; }
+    p { 
+      color: #fff; 
+      font-size: 1.3em;
+    }
+    a { 
+      color: @darkBlue; 
+      font-size: 1.3em;
+    }
     span.label {
-      margin-left: 5px;
+      margin: 5px;
       display: inline-block;
+      font-size: 1em;
     }
   }
 } 

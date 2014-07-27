@@ -1,5 +1,5 @@
 div.portfolio-p {
-  padding-top: 40px;
+  padding-top: 20px;
   text-align: center;
   height: 100%;
   overflow-x: hidden;
@@ -7,12 +7,29 @@ div.portfolio-p {
   transition-duration: 0.3s;
   div.portfolio-header { margin-bottom: 50px; }
   hr.star-light:after {
-    background-color: darken(#fada72, 10%);
+    background-color: darken(#fada72, 15%);
   }
   h1 {
     color: #fff;
     font-family: 'Ubuntu Condensed', sans-serif;
     font-size: 40px;
     text-shadow: 1px 1px 1px rgba(0,0,0,0.2);
+  }
+  div.portfolio-renderer {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: darken(#fada72, 15%);
+    transition-duration: 0.3s;
+    -webkit-transform: scale(0);
+    transform: scale(0);
+    -moz-transform: scale(0);
+    &.animate {
+      -webkit-transform: scale(1);
+      transform: scale(1);
+      -moz-transform: scale(1);
+    }
   }
 }

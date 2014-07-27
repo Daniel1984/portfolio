@@ -16,7 +16,7 @@
 
     model: function() {},
 
-    controller: require('../controllers/portfolio_item_controller'),
+    controller: require('../controllers/portfolio_controller'),
 
     view: function(ctrl) { return views[m.route.param('view')](ctrl); }
 

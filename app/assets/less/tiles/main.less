@@ -3,21 +3,27 @@
   display: -moz-box;
   display: -ms-flexbox;
   display: -webkit-flex;
+  display: -o-flex;
   display: flex;
   -webkit-flex-flow: row wrap;
-  justify-content: space-around;
-  flex-wrap: wrap;
+  -o-flex-flow: row wrap;
+  -moz-flex-flow: row wrap;
+  flex-flow: row wrap;
+  justify-content: center;
+  //flex-wrap: wrap;
 }
 
 div.tiles {
   position: relative;
   width: 100%;
   height: 100%;
-  overflow-y: auto;
+//  overflow-x: hidden;
+//  overflow-y: auto;
   .flex();
   div.tile-item {
     .flex();
-    flex-direction: column;
+    -webkit-flex-direction: column; 
+    flex-direction: column; 
     transition-duration: 0.3s;
     border: 4px solid;
     padding: 6px;
@@ -68,9 +74,9 @@ div.tiles {
         text-align: center;
         font-size: 7em;
       }
-      div.inner-item { background: darken(#b388ff, 20%); }
+      div.inner-item { background: darken(#b388ff, 10%); }
       &:hover{
-        background: darken(#b388ff, 20%)!important;
+        background: darken(#b388ff, 10%)!important;
       }
     }
     &.portfolio {
@@ -82,9 +88,9 @@ div.tiles {
         text-align: center;
         font-size: 7em;
       }
-      div.inner-item { background: darken(#fada72, 10%); }
+      div.inner-item { background: darken(#fada72, 15%); }
       &:hover{
-        background: darken(#fada72, 10%)!important;
+        background: darken(#fada72, 15%)!important;
       }
     }
     &.experience {
@@ -102,11 +108,12 @@ div.tiles {
     }
     div.inner-item {
       transition-duration: 0.3s;
-      position: absolute;
+      position: fixed;
       top: 0;
       bottom: 0;
       left: 0;
       right: 0;
+      overflow-y: auto;
       -webkit-transform: scale(0);
       transform: scale(0);
       -moz-transform: scale(0);

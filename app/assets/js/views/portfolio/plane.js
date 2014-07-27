@@ -4,7 +4,10 @@
   var m = require('mithril');
 
   module.exports = function(ctrl) {
-    return m('div.ssc.portfolio-item-inner.row.fade-out', { config: ctrl.isReady }, [
+    return m('div.ssc.portfolio-item-inner.fade-out', { config: ctrl.isReady }, [
+      m('div.back-top-btn', { onclick: ctrl.fadeOutView }, [
+        m('i.fa.fa-long-arrow-left')
+      ]),
       m('div.header', [
         m('h1', 'Flappy plane'),
         m('hr.star-light')
@@ -33,6 +36,9 @@
             m('span.label.label-danger', 'Github')
           ])
         ])
+      ]),
+      m('div.close-btn', { onclick: ctrl.fadeOutView },  [
+        m('i.fa.fa-times-circle-o')
       ])
     ]);
   };

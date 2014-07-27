@@ -1,9 +1,9 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);throw new Error("Cannot find module '"+o+"'")}var f=n[o]={exports:{}};t[o][0].call(f.exports,function(e){var n=t[o][1][e];return s(n?n:e)},f,f.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 (function() {
   'use strict';
-
+  
   module.exports = function() {
-    
+  
     this.hideView = function() {
       window.history.go(0);
     };
@@ -64,13 +64,56 @@
 (function() {
   'use strict';
   
+  var modules = {
+    ssc: require('../modules/portfolio/ssc'),
+    pt: require('../modules/portfolio/pt'),
+    ss: require('../modules/portfolio/ss'),
+    plane: require('../modules/portfolio/plane'),
+    slot: require('../modules/portfolio/slot'),
+    orbit: require('../modules/portfolio/orbit'),
+    casino: require('../modules/portfolio/casino')
+  };
+
   module.exports = function() {
     this.portfolio_items = ['ssc','pt','ss','plane','slot','orbit','casino'];
+  
+    this.hideView = function() {
+      window.history.go(0);
+    };
+
+    this.renderPortfolioItem = function(e) {
+      e.preventDefault();
+      var module = e.currentTarget.getAttribute('data-module');
+      var el = document.querySelector('.portfolio-renderer');
+      el.classList.add('animate');
+      window.cock = modules[module];
+      m.module(el, modules[module]);
+    };
+
+    this.isReady = function(el, ready, scope) {
+
+    };
+
   };
 
 })();
 
-},{}],5:[function(require,module,exports){
+},{"../modules/portfolio/casino":13,"../modules/portfolio/orbit":14,"../modules/portfolio/plane":15,"../modules/portfolio/pt":16,"../modules/portfolio/slot":17,"../modules/portfolio/ss":18,"../modules/portfolio/ssc":19}],5:[function(require,module,exports){
+(function() {
+  'use strict';
+
+  module.exports = function() {
+
+    this.fadeOutView = function() {
+      console.log('ssssssssssssssssssssssssss');
+      document.querySelector('.portfolio-renderer').classList.remove('animate');
+    };
+
+  };
+
+})();
+
+},{}],6:[function(require,module,exports){
 (function() {
   'use strict';
 
@@ -114,7 +157,7 @@
 })();
 
 
-},{}],6:[function(require,module,exports){
+},{}],7:[function(require,module,exports){
 (function() {
   'use strict';
   
@@ -125,27 +168,31 @@
     contact: require('../modules/contact'),
     experience: require('../modules/experience')
   };
+
   var m = require('mithril');
 
   module.exports = function() {
 
-    window.onpopstate = function(event) {
+    window.onpopstate = function(event) { 
       history.go(1);
+      document.querySelector('.tiles').style.overflowY = 'auto';
       document.querySelector('.inner-item.animate').classList.remove('animate');
     };
 
     this.onItemClick = function(e) {
       history.pushState(null, null, location.href);
+      document.querySelector('.tiles').style.overflowY = 'hidden';
+      var module = e.currentTarget.getAttribute('data-module');
       var el = e.currentTarget.querySelector('.inner-item');
       el.classList.add('animate');
-      m.module(el, modules[e.currentTarget.getAttribute('data-module')]);
+      m.module(el, modules[module]);
     };
 
   };
 
 })();
 
-},{"../modules/about":8,"../modules/contact":9,"../modules/experience":10,"../modules/portfolio":11,"../modules/skills":12,"mithril":20}],7:[function(require,module,exports){
+},{"../modules/about":9,"../modules/contact":10,"../modules/experience":11,"../modules/portfolio":12,"../modules/skills":21,"mithril":36}],8:[function(require,module,exports){
 (function() {
   "use strict";
 
@@ -154,13 +201,14 @@
   window.onload = function() {
     m.route.mode = 'hash';
     m.route(document.querySelector('.ui-router'), '/', {
-      '/': require('./modules/tiles')
+      '/': require('./modules/tiles'),
+      'portfolio/:view': require('./modules/portfolio_item')
     });
   };
 
 })();
 
-},{"./modules/tiles":13,"mithril":20}],8:[function(require,module,exports){
+},{"./modules/portfolio_item":20,"./modules/tiles":22,"mithril":36}],9:[function(require,module,exports){
 (function() {
   'use strict';
 
@@ -176,7 +224,7 @@
 
 })();
 
-},{"../controllers/about_controller":1,"../views/about":14}],9:[function(require,module,exports){
+},{"../controllers/about_controller":1,"../views/about":23}],10:[function(require,module,exports){
 (function() {
   'use strict'; 
 
@@ -192,7 +240,7 @@
 
 })();
 
-},{"../controllers/contact_controller":2,"../views/contact":15}],10:[function(require,module,exports){
+},{"../controllers/contact_controller":2,"../views/contact":24}],11:[function(require,module,exports){
 (function() {
   'use strict'; 
 
@@ -208,7 +256,7 @@
 
 })();
 
-},{"../controllers/experience_controller":3,"../views/experience":16}],11:[function(require,module,exports){
+},{"../controllers/experience_controller":3,"../views/experience":25}],12:[function(require,module,exports){
 (function() {
   'use strict';
 
@@ -224,7 +272,146 @@
 
 })();
 
-},{"../controllers/portfolio_controller":4,"../views/portfolio":17}],12:[function(require,module,exports){
+},{"../controllers/portfolio_controller":4,"../views/portfolio":26}],13:[function(require,module,exports){
+(function() {
+  'use strict';
+
+  module.exports = {
+
+    model: function() {},
+
+    controller: require('../../controllers/portfolio_item_controller'),
+
+    view: function(ctrl) { return require('../../views/portfolio/casino')(ctrl); }
+
+  };
+
+})();
+
+},{"../../controllers/portfolio_item_controller":5,"../../views/portfolio/casino":27}],14:[function(require,module,exports){
+(function() {
+  'use strict';
+
+  module.exports = {
+
+    model: function() {},
+
+    controller: require('../../controllers/portfolio_item_controller'),
+
+    view: function(ctrl) { return require('../../views/portfolio/orbit')(ctrl); }
+
+  };
+
+})();
+
+},{"../../controllers/portfolio_item_controller":5,"../../views/portfolio/orbit":28}],15:[function(require,module,exports){
+(function() {
+  'use strict';
+
+  module.exports = {
+
+    model: function() {},
+
+    controller: require('../../controllers/portfolio_item_controller'),
+
+    view: function(ctrl) { return require('../../views/portfolio/plane')(ctrl); }
+
+  };
+
+})();
+
+},{"../../controllers/portfolio_item_controller":5,"../../views/portfolio/plane":29}],16:[function(require,module,exports){
+(function() {
+  'use strict';
+
+  module.exports = {
+
+    model: function() {},
+
+    controller: require('../../controllers/portfolio_item_controller'),
+
+    view: function(ctrl) { return require('../../views/portfolio/pt')(ctrl); }
+
+  };
+
+})();
+
+},{"../../controllers/portfolio_item_controller":5,"../../views/portfolio/pt":30}],17:[function(require,module,exports){
+(function() {
+  'use strict';
+
+  module.exports = {
+
+    model: function() {},
+
+    controller: require('../../controllers/portfolio_item_controller'),
+
+    view: function(ctrl) { return require('../../views/portfolio/slot')(ctrl); }
+
+  };
+
+})();
+
+},{"../../controllers/portfolio_item_controller":5,"../../views/portfolio/slot":31}],18:[function(require,module,exports){
+(function() {
+  'use strict';
+
+  module.exports = {
+
+    model: function() {},
+
+    controller: require('../../controllers/portfolio_item_controller'),
+
+    view: function(ctrl) { return require('../../views/portfolio/ss')(ctrl); }
+
+  };
+
+})();
+
+},{"../../controllers/portfolio_item_controller":5,"../../views/portfolio/ss":32}],19:[function(require,module,exports){
+(function() {
+  'use strict';
+
+  module.exports = {
+
+    model: function() {},
+
+    controller: require('../../controllers/portfolio_item_controller'),
+
+    view: function(ctrl) { return require('../../views/portfolio/ssc')(ctrl); }
+
+  };
+
+})();
+
+},{"../../controllers/portfolio_item_controller":5,"../../views/portfolio/ssc":33}],20:[function(require,module,exports){
+(function() {
+  'use strict';
+  
+  var m = require('mithril');
+  var views = {
+        pt: require('../views/portfolio/pt'),
+        casino: require('../views/portfolio/casino'),
+        orbit: require('../views/portfolio/orbit'),
+        plane: require('../views/portfolio/plane'),
+        slot: require('../views/portfolio/slot'),
+        ss: require('../views/portfolio/ss'),
+        ssc: require('../views/portfolio/ssc')
+      };
+
+  module.exports = {
+
+    model: function() {},
+
+    controller: require('../controllers/portfolio_controller'),
+
+    view: function(ctrl) { return views[m.route.param('view')](ctrl); }
+
+  };
+
+})();
+
+},{"../controllers/portfolio_controller":4,"../views/portfolio/casino":27,"../views/portfolio/orbit":28,"../views/portfolio/plane":29,"../views/portfolio/pt":30,"../views/portfolio/slot":31,"../views/portfolio/ss":32,"../views/portfolio/ssc":33,"mithril":36}],21:[function(require,module,exports){
 (function() {
   'use strict';
 
@@ -240,7 +427,7 @@
 
 })();
 
-},{"../controllers/skills_controller":5,"../views/skills":18}],13:[function(require,module,exports){
+},{"../controllers/skills_controller":6,"../views/skills":34}],22:[function(require,module,exports){
 (function() {
   'use strict';
 
@@ -256,14 +443,17 @@
 
 })(); 
 
-},{"../controllers/tiles_controller":6,"../views/tiles":19}],14:[function(require,module,exports){
+},{"../controllers/tiles_controller":7,"../views/tiles":35}],23:[function(require,module,exports){
 (function() {
   'use strict';
 
   var m = require('mithril');
 
   module.exports = function(ctrl) {
-    return m("div.intro-p.row-fluid", [
+    return m("div.intro-p.row-fluid", { config: ctrl.isReady }, [
+      m('div.back-top-btn', { onclick: ctrl.hideView }, [
+        m('i.fa.fa-long-arrow-left')
+      ]),
       m('div.pic.col-xs-12.col-sm-4.col-md-4.col-lg-4.col-sm-offset-4.col-md-offset-4.col-lg-offset-4', [
         m("img[src='/img/me.png']")
       ]),
@@ -282,7 +472,7 @@
 
 })();
 
-},{"mithril":20}],15:[function(require,module,exports){
+},{"mithril":36}],24:[function(require,module,exports){
 (function() {
   'use strict';
 
@@ -336,7 +526,7 @@
 
 })();
 
-},{"mithril":20}],16:[function(require,module,exports){
+},{"mithril":36}],25:[function(require,module,exports){
 (function() {
   'use strict';
 
@@ -382,6 +572,10 @@
             m("a[href='https://www.youtube.com/watch?v=D1hfwQNDDns'][target='_blank']", 'here'),
           ]),
           m('footer', '2008 - 2010')
+        ]),
+
+        m('div.close-btn', { onclick: ctrl.hideView },  [
+          m('i.fa.fa-times-circle-o')
         ])
         
       ])
@@ -390,7 +584,7 @@
 
 })();
 
-},{"mithril":20}],17:[function(require,module,exports){
+},{"mithril":36}],26:[function(require,module,exports){
 (function() {
   'use strict';
 
@@ -398,13 +592,16 @@
 
   module.exports = function(ctrl) {
     return m("div.portfolio-p.row-fluid.fade-out", { config: ctrl.isReady }, [
+      m('div.back-top-btn', { onclick: ctrl.hideView }, [
+        m('i.fa.fa-long-arrow-left')
+      ]),
       m('div.portfolio-header', [
         m('h1', 'Portfolio'),
         m('hr.star-light')
       ]),
       ctrl.portfolio_items.map(function(item, i) {
         return m('div.col-sm-4.portfolio-item', [
-          m("a.portfolio-link[href='/#/portfolio/" + item + "']", [
+          m("a.portfolio-link[href='#'][data-module='" + item + "']", { onclick: ctrl.renderPortfolioItem }, [
             m('div.caption', [
               m('div.caption-content', [
                 m('i.fa.fa-search-plus.fa-3x')
@@ -413,13 +610,347 @@
             m("img[src='/img/portfolio/" + item + ".png']")
           ])
         ]);
-      })
+      }),
+      m('div.portfolio-renderer'),
+      m('div.close-btn', { onclick: ctrl.hideView },  [
+        m('i.fa.fa-times-circle-o')
+      ])
     ]);
   };
 
 })();
 
-},{"mithril":20}],18:[function(require,module,exports){
+},{"mithril":36}],27:[function(require,module,exports){
+(function() {
+  'use strict';
+
+  var m = require('mithril');
+
+  module.exports = function(ctrl) {
+    return m('div.pt.portfolio-item-inner.fade-out', { config: ctrl.isReady }, [
+      m('div.back-top-btn', { onclick: ctrl.fadeOutView }, [
+        m('i.fa.fa-long-arrow-left')
+      ]),
+      m('div.header', [
+        m('h1', '3D Room'),
+        m('hr.star-light')
+      ]),
+      m('div.col-xs-12.col-sm-8.col-md-8.col-lg-8.col-sm-offset-2.col-md-offset-2.col-lg-offset-2', [
+        m("img[src='/img/portfolio/casino.png']"),
+        m('div.row.content', [
+          m('div.col-xs-12.col-sm-12.col-md-6.col-lg-6', [
+            m('blockquote', [ m('h4', 'About') ]),
+            m('p', 'Yet another Flash 3D example')
+          ]),
+          m('div.col-xs-12.col-sm-12.col-md-6.col-lg-6', [
+            m('blockquote', [ m('h4', 'Address') ]),
+            m("a[href='/img/3d/index.html'][target='_blank']", 'http://www.3d.com')
+          ]),
+          m('div.col-xs-12.col-sm-12.col-md-12.col-lg-12', [
+            m('blockquote', [ m('h4', 'Tools used') ]),
+            m('span.label.label-danger', 'Flash'),
+            m('span.label.label-danger', 'ActionScript 3.0'),
+            m('span.label.label-danger', 'HTML5')
+          ])
+        ])
+      ]),
+      m('div.close-btn', { onclick: ctrl.fadeOutView },  [
+        m('i.fa.fa-times-circle-o')
+      ])
+    ]);
+  };
+
+})();
+
+},{"mithril":36}],28:[function(require,module,exports){
+(function() {
+  'use strict';
+
+  var m = require('mithril');
+
+  module.exports = function(ctrl) {
+    return m('div.pt.portfolio-item-inner.fade-out', { config: ctrl.isReady }, [
+      m('div.back-top-btn', { onclick: ctrl.fadeOutView }, [
+        m('i.fa.fa-long-arrow-left')
+      ]),
+      m('div.header', [
+        m('h1', 'Orbit'),
+        m('hr.star-light')
+      ]),
+      m('div.col-xs-12.col-sm-8.col-md-8.col-lg-8.col-sm-offset-2.col-md-offset-2.col-lg-offset-2', [
+        m("img[src='/img/portfolio/orbit.png']"),
+        m('div.row.content', [
+          m('div.col-xs-12.col-sm-12.col-md-6.col-lg-6', [
+            m('blockquote', [ m('h4', 'About') ]),
+            m('p', 'One of my first Flash 3D examples')
+          ]),
+          m('div.col-xs-12.col-sm-12.col-md-6.col-lg-6', [
+            m('blockquote', [ m('h4', 'Address') ]),
+            m("a[href='/img/moonwalker/index.html'][target='_blank']", 'http://www.orbit.com')
+          ]),
+          m('div.col-xs-12.col-sm-12.col-md-12.col-lg-12', [
+            m('blockquote', [ m('h4', 'Tools used') ]),
+            m('span.label.label-danger', 'Flash'),
+            m('span.label.label-danger', 'ActionScript 3.0'),
+            m('span.label.label-danger', 'HTML5')
+          ])
+        ])
+      ]),
+      m('div.close-btn', { onclick: ctrl.fadeOutView },  [
+        m('i.fa.fa-times-circle-o')
+      ])
+    ]);
+  };
+
+})();
+
+},{"mithril":36}],29:[function(require,module,exports){
+(function() {
+  'use strict';
+
+  var m = require('mithril');
+
+  module.exports = function(ctrl) {
+    return m('div.ssc.portfolio-item-inner.fade-out', { config: ctrl.isReady }, [
+      m('div.back-top-btn', { onclick: ctrl.fadeOutView }, [
+        m('i.fa.fa-long-arrow-left')
+      ]),
+      m('div.header', [
+        m('h1', 'Flappy plane'),
+        m('hr.star-light')
+      ]),
+      m('div.col-xs-12.col-sm-8.col-md-8.col-lg-8.col-sm-offset-2.col-md-offset-2.col-lg-offset-2', [
+        m("img[src='/img/portfolio/plane.png']"),
+        m('div.row.content', [
+          m('div.col-xs-12.col-sm-12.col-md-6.col-lg-6', [
+            m('blockquote', [ m('h4', 'About') ]),
+            m('p', 'My first game build with canvas. Automated development process with help of gulp and browserify.')
+          ]),
+          m('div.col-xs-12.col-sm-12.col-md-6.col-lg-6', [
+            m('blockquote', [ m('h4', 'Address') ]),
+            m("a[href='http://plane-flappy.herokuapp.com/'][target='_blank']", 'http://www.flappyplane.com')
+          ]),
+          m('div.col-xs-12.col-sm-12.col-md-12.col-lg-12', [
+            m('blockquote', [ m('h4', 'Tools used') ]),
+            m('span.label.label-danger', 'Backbone.js'),
+            m('span.label.label-danger', 'Browserify'),
+            m('span.label.label-danger', 'Pixi.js'),
+            m('span.label.label-danger', 'Node.js'),
+            m('span.label.label-danger', 'MongoDB'),
+            m('span.label.label-danger', 'Javascript'),
+            m('span.label.label-danger', 'LESS'),
+            m('span.label.label-danger', 'HTML5'),
+            m('span.label.label-danger', 'Github')
+          ])
+        ])
+      ]),
+      m('div.close-btn', { onclick: ctrl.fadeOutView },  [
+        m('i.fa.fa-times-circle-o')
+      ])
+    ]);
+  };
+
+})();
+
+},{"mithril":36}],30:[function(require,module,exports){
+(function() {
+  'use strict';
+
+  var m = require('mithril');
+
+  module.exports = function(ctrl) {
+    return m('div.pt.portfolio-item-inner.fade-out', { config: ctrl.isReady }, [
+      m('div.back-top-btn', { onclick: ctrl.fadeOutView }, [
+        m('i.fa.fa-long-arrow-left')
+      ]),
+      m('div.header', [
+        m('h1', 'Physitrack'),
+        m('hr.star-light')
+      ]),
+      m('div.col-xs-12.col-sm-8.col-md-8.col-lg-8.col-sm-offset-2.col-md-offset-2.col-lg-offset-2', [
+        m("img[src='/img/portfolio/pt.png']"),
+        m('div.row.content', [
+          m('div.col-xs-12.col-sm-12.col-md-6.col-lg-6', [
+            m('blockquote', [ m('h4', 'About') ]),
+            m('p', 'App build for home exercise prescription. Whole system consists of 5 different types of app: admin app, app for doctors, mobile web app for doctors, app for patiens and its mobile web app version. I was responsible mainly for the front-end logic including desktop and mobile versions. More info can be found on site.')
+          ]),
+          m('div.col-xs-12.col-sm-12.col-md-6.col-lg-6', [
+            m('blockquote', [ m('h4', 'Address') ]),
+            m("a[href='http://www.physitrack.com'][target='_blank']", 'http://www.physitrack.com')
+          ]),
+          m('div.col-xs-12.col-sm-12.col-md-12.col-lg-12', [
+            m('blockquote', [ m('h4', 'Tools used') ]),
+            m('span.label.label-danger', 'Backbone.js'),
+            m('span.label.label-danger', 'Marionette.js'),
+            m('span.label.label-danger', 'Sass'),
+            m('span.label.label-danger', 'Bootstrap'),
+            m('span.label.label-danger', 'Ruby on Rails'),
+            m('span.label.label-danger', 'Msql'),
+            m('span.label.label-danger', 'Capistrano'),
+            m('span.label.label-danger', 'Jenkins'),
+            m('span.label.label-danger', 'Coffeescript'),
+            m('span.label.label-danger', 'Javascript'),
+            m('span.label.label-danger', 'Github')
+          ])
+        ])
+      ]),
+      m('div.close-btn', { onclick: ctrl.fadeOutView },  [
+        m('i.fa.fa-times-circle-o')
+      ])
+    ]);
+  };
+
+})();
+
+},{"mithril":36}],31:[function(require,module,exports){
+(function() {
+  'use strict';
+
+  var m = require('mithril');
+
+  module.exports = function(ctrl) {
+    return m('div.pt.portfolio-item-inner.fade-out', { config: ctrl.isReady }, [
+      m('div.back-top-btn', { onclick: ctrl.fadeOutView }, [
+        m('i.fa.fa-long-arrow-left')
+      ]),
+      m('div.header', [
+        m('h1', 'Slot machine'),
+        m('hr.star-light')
+      ]),
+      m('div.col-xs-12.col-sm-8.col-md-8.col-lg-8.col-sm-offset-2.col-md-offset-2.col-lg-offset-2', [
+        m("img[src='/img/portfolio/slot.png']"),
+        m('div.row.content', [
+          m('div.col-xs-12.col-sm-12.col-md-6.col-lg-6', [
+            m('blockquote', [ m('h4', 'About') ]),
+            m('p', 'Back from the time when I was playing with flash and ActionScript 3.0. Slot machine with bonus game.')
+          ]),
+          m('div.col-xs-12.col-sm-12.col-md-6.col-lg-6', [
+            m('blockquote', [ m('h4', 'Address') ]),
+            m("a[href='/img/slot/index.html'][target='_blank']", 'http://www.slotmachine.com')
+          ]),
+          m('div.col-xs-12.col-sm-12.col-md-12.col-lg-12', [
+            m('blockquote', [ m('h4', 'Tools used') ]),
+            m('span.label.label-danger', 'Flash'),
+            m('span.label.label-danger', 'ActionScript 3.0'),
+            m('span.label.label-danger', 'HTML5')
+          ])
+        ])
+      ]),
+      m('div.close-btn', { onclick: ctrl.fadeOutView },  [
+        m('i.fa.fa-times-circle-o')
+      ])
+    ]);
+  };
+
+})();
+
+},{"mithril":36}],32:[function(require,module,exports){
+(function() {
+  'use strict';
+
+  var m = require('mithril');
+
+  module.exports = function(ctrl) {
+    return m('div.ssc.portfolio-item-inner.fade-out', { config: ctrl.isReady }, [
+      m('div.back-top-btn', { onclick: ctrl.fadeOutView }, [
+        m('i.fa.fa-long-arrow-left')
+      ]),
+      m('div.header', [
+        m('h1', 'Same System'),
+        m('hr.star-light')
+      ]),
+      m('div.col-xs-12.col-sm-8.col-md-8.col-lg-8.col-sm-offset-2.col-md-offset-2.col-lg-offset-2', [
+        m("img[src='/img/portfolio/ss.png']"),
+        m('div.row.content', [
+          m('div.col-xs-12.col-sm-12.col-md-6.col-lg-6', [
+            m('blockquote', [ m('h4', 'About') ]),
+            m('p', 'Shop administration application. Porting existing mobile app into cordova using latest HTML5, CSS3 and javascript features.')
+          ]),
+          m('div.col-xs-12.col-sm-12.col-md-6.col-lg-6', [
+            m('blockquote', [ m('h4', 'Address') ]),
+            m("a[href='http://samesystem.com/'][target='_blank']", 'http://www.samesystem.com')
+          ]),
+          m('div.col-xs-12.col-sm-12.col-md-12.col-lg-12', [
+            m('blockquote', [ m('h4', 'Tools used') ]),
+            m('span.label.label-danger', 'Cordova'),
+            m('span.label.label-danger', 'Backbone.js'),
+            m('span.label.label-danger', 'Browserify'),
+            m('span.label.label-danger', 'Mocha'),
+            m('span.label.label-danger', 'Chai'),
+            m('span.label.label-danger', 'Karma'),
+            m('span.label.label-danger', 'Bootstrap'),
+            m('span.label.label-danger', 'Gulp'),
+            m('span.label.label-danger', 'Node.js'),
+            m('span.label.label-danger', 'Javascript'),
+            m('span.label.label-danger', 'LESS'),
+            m('span.label.label-danger', 'HTML5'),
+            m('span.label.label-danger', 'CSS3'),
+            m('span.label.label-danger', 'Github')
+          ])
+        ])
+      ]),
+      m('div.close-btn', { onclick: ctrl.fadeOutView },  [
+        m('i.fa.fa-times-circle-o')
+      ])
+    ]);
+  };
+
+})();
+
+},{"mithril":36}],33:[function(require,module,exports){
+(function() {
+  'use strict';
+
+  var m = require('mithril');
+
+  module.exports = function(ctrl) {
+    return m('div.ssc.portfolio-item-inner.fade-out', { config: ctrl.isReady }, [
+      m('div.back-top-btn', { onclick: ctrl.fadeOutView }, [
+        m('i.fa.fa-long-arrow-left')
+      ]),
+      m('div.header', [
+        m('h1', 'Star Slot City'),
+        m('hr.star-light')
+      ]),
+      m('div.col-xs-12.col-sm-8.col-md-8.col-lg-8.col-sm-offset-2.col-md-offset-2.col-lg-offset-2', [
+        m("img[src='/img/portfolio/ssc.png']"),
+        m('div.row.content', [
+          m('div.col-xs-12.col-sm-12.col-md-6.col-lg-6', [
+            m('blockquote', [ m('h4', 'About') ]),
+            m('p', 'The online casino. This is one of the first web based, cross platform products working on desktop, tablet and mobile devices build for UK customers. I was responsible for the front as well as back-end of this app.')
+          ]),
+          m('div.col-xs-12.col-sm-12.col-md-6.col-lg-6', [
+            m('blockquote', [ m('h4', 'Address') ]),
+            m("a[href='http://www.starslotcity.com'][target='_blank']", 'http://www.starslotcity.com')
+          ]),
+          m('div.col-xs-12.col-sm-12.col-md-12.col-lg-12', [
+            m('blockquote', [ m('h4', 'Tools used') ]),
+            m('span.label.label-danger', 'Backbone.js'),
+            m('span.label.label-danger', 'Require.js'),
+            m('span.label.label-danger', 'Jasmine'),
+            m('span.label.label-danger', 'Node.js'),
+            m('span.label.label-danger', 'Ruby on Rails'),
+            m('span.label.label-danger', 'MongoDB'),
+            m('span.label.label-danger', 'Postgresql'),
+            m('span.label.label-danger', 'Rspec'),
+            m('span.label.label-danger', 'Puppet'),
+            m('span.label.label-danger', 'Capistrano'),
+            m('span.label.label-danger', 'Jenkins'),
+            m('span.label.label-danger', 'Coffeescript'),
+            m('span.label.label-danger', 'Javascript'),
+            m('span.label.label-danger', 'Github')
+          ])
+        ])
+      ]),
+      m('div.close-btn', { onclick: ctrl.fadeOutView },  [
+        m('i.fa.fa-times-circle-o')
+      ])
+    ]);
+  };
+
+})();
+
+},{"mithril":36}],34:[function(require,module,exports){
 (function() {
   'use strict';
 
@@ -437,7 +968,7 @@
 
 })();
 
-},{"mithril":20}],19:[function(require,module,exports){
+},{"mithril":36}],35:[function(require,module,exports){
 (function() {
   'use strict';
 
@@ -493,7 +1024,7 @@
 
 })();
 
-},{"mithril":20}],20:[function(require,module,exports){
+},{"mithril":36}],36:[function(require,module,exports){
 Mithril = m = new function app(window) {
 	var selectorCache = {}
 	var type = {}.toString
@@ -1117,4 +1648,4 @@ if (typeof define == "function" && define.amd) define(function() {return m})
 
 ;;;
 
-},{}]},{},[7])
+},{}]},{},[8])

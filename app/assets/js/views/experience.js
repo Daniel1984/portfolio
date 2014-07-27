@@ -43,6 +43,10 @@
             m("a[href='https://www.youtube.com/watch?v=D1hfwQNDDns'][target='_blank']", 'here'),
           ]),
           m('footer', '2008 - 2010')
+        ]),
+
+        m('div.close-btn', { onclick: ctrl.hideView },  [
+          m('i.fa.fa-times-circle-o')
         ])
         
       ])
