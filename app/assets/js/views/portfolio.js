@@ -8,10 +8,8 @@
       m('div.back-top-btn', { onclick: ctrl.hideView }, [
         m('i.fa.fa-long-arrow-left')
       ]),
-      m('div.portfolio-header', [
-        m('h1', 'Portfolio'),
-        m('hr.star-light')
-      ]),
+      m('h1', 'Portfolio'),
+      m('hr.star-light'),
       ctrl.portfolio_items.map(function(item, i) {
         return m('div.col-sm-4.portfolio-item', [
           m("a.portfolio-link[href='#'][data-module='" + item + "']", { onclick: ctrl.renderPortfolioItem }, [

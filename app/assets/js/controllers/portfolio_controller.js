@@ -21,10 +21,9 @@
     this.renderPortfolioItem = function(e) {
       e.preventDefault();
       var module = e.currentTarget.getAttribute('data-module');
-      var el = document.querySelector('.portfolio-renderer');
-      el.classList.add('animate');
-      window.cock = modules[module];
+      var el = document.querySelector('.portfolio-renderer'); 
       m.module(el, modules[module]);
+      el.classList.add('animate');
     };
 
     this.isReady = function(el, ready, scope) {

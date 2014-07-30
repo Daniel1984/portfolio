@@ -1,8 +1,28 @@
 div.skills-p { 
-  padding-top: 40px;
+  padding-top: 20px;
   text-align: center;
   height: 100%;
   overflow-x: hidden;
   overflow-y: auto;
-  transition-duration: 0.3s;
+  font-family: 'Ubuntu Condensed', sans-serif;
+  hr.star-light {
+    margin-bottom: 55px;
+    &:after { 
+      background-color: darken(#dda0dd, 20%); 
+    }
+  }
+  h1 { font-size: 40px; }
+  div.progress-bar {
+    text-align: left;
+    padding-left: 11px;
+    span { font-size: 15px; }
+  }
+  div.progress {
+    transition-duration: 0.2s;
+    &:hover {
+      -webkit-transform: scale(1.1, 1.6);
+      -moz-transform: scale(1.1, 1.6);
+      transform: scale(1.1, 1.6);
+    }
+  }
 }

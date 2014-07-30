@@ -20,12 +20,13 @@
     };
 
     this.onItemClick = function(e) {
+      e.preventDefault();
       history.pushState(null, null, location.href);
       document.querySelector('.tiles').style.overflowY = 'hidden';
       var module = e.currentTarget.getAttribute('data-module');
-      var el = e.currentTarget.querySelector('.inner-item');
-      el.classList.add('animate');
+      var el = e.currentTarget.querySelector('.inner-item'); 
       m.module(el, modules[module]);
+      el.classList.add('animate');
     };
 
   };

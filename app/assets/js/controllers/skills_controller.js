@@ -22,6 +22,9 @@
       'gulp'
     ];
 
+    this.hideView = function() {
+      window.history.go(0);
+    };
 //    this.onunload = function() { 
 //      document.querySelector('.skills').classList.add('fade-out');
 //    };

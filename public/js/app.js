@@ -84,10 +84,9 @@
     this.renderPortfolioItem = function(e) {
       e.preventDefault();
       var module = e.currentTarget.getAttribute('data-module');
-      var el = document.querySelector('.portfolio-renderer');
-      el.classList.add('animate');
-      window.cock = modules[module];
+      var el = document.querySelector('.portfolio-renderer'); 
       m.module(el, modules[module]);
+      el.classList.add('animate');
     };
 
     this.isReady = function(el, ready, scope) {
@@ -105,7 +104,6 @@
   module.exports = function() {
 
     this.fadeOutView = function() {
-      console.log('ssssssssssssssssssssssssss');
       document.querySelector('.portfolio-renderer').classList.remove('animate');
     };
 
@@ -138,6 +136,9 @@
       'gulp'
     ];
 
+    this.hideView = function() {
+      window.history.go(0);
+    };
 //    this.onunload = function() { 
 //      document.querySelector('.skills').classList.add('fade-out');
 //    };
@@ -180,12 +181,13 @@
     };
 
     this.onItemClick = function(e) {
+      e.preventDefault();
       history.pushState(null, null, location.href);
       document.querySelector('.tiles').style.overflowY = 'hidden';
       var module = e.currentTarget.getAttribute('data-module');
-      var el = e.currentTarget.querySelector('.inner-item');
-      el.classList.add('animate');
+      var el = e.currentTarget.querySelector('.inner-item'); 
       m.module(el, modules[module]);
+      el.classList.add('animate');
     };
 
   };
@@ -595,10 +597,8 @@
       m('div.back-top-btn', { onclick: ctrl.hideView }, [
         m('i.fa.fa-long-arrow-left')
       ]),
-      m('div.portfolio-header', [
-        m('h1', 'Portfolio'),
-        m('hr.star-light')
-      ]),
+      m('h1', 'Portfolio'),
+      m('hr.star-light'),
       ctrl.portfolio_items.map(function(item, i) {
         return m('div.col-sm-4.portfolio-item', [
           m("a.portfolio-link[href='#'][data-module='" + item + "']", { onclick: ctrl.renderPortfolioItem }, [
@@ -958,20 +958,65 @@
 
   module.exports = function(ctrl) {
     var view = m("div.skills-p.row-fluid.fade-out", { config: ctrl.isReady }, [
-//      ctrl.imagesList.map(function(img, i) {
-//        return m("img.physics [src='/img/logo/" + img + ".png']");
-//      })
-      m('div.col-sm-6.col-lg-6.col-xs-12', [
+      m('div.back-top-btn', { onclick: ctrl.hideView }, [
+        m('i.fa.fa-long-arrow-left')
+      ]),
+      m('div.col-xs-12.col-sm-8.col-md-8.col-lg-8.col-sm-offset-2.col-md-offset-2.col-lg-offset-2', [
+        m('h1', 'Skills'),
+        m('hr.star-light'),
+        m('div.progress', [
+          m('div.progress-bar.progress-bar-success', { style : { width: '95%' }}, [
+            m('span', 'Javascript 95%')
+          ])
+        ]),
         m('div.progress', [
           m('div.progress-bar.progress-bar-success', { style : { width: '90%' }}, [
-            m('span', 'Javascript 90%')
+            m('span', 'HTML5 90%')
+          ])
+        ]),
+        m('div.progress', [
+          m('div.progress-bar.progress-bar-success', { style : { width: '90%' }}, [
+            m('span', 'CSS3 90%')
+          ])
+        ]),
+        m('div.progress', [
+          m('div.progress-bar.progress-bar-success', { style : { width: '75%' }}, [
+            m('span', 'NodeJS 75%')
           ])
         ]),
         m('div.progress', [
           m('div.progress-bar.progress-bar-success', { style : { width: '70%' }}, [
-            m('span', 'NodeJS 70%')
+            m('span', 'Mongo 70%')
+          ])
+        ]),
+        m('div.progress', [
+          m('div.progress-bar.progress-bar-success', { style : { width: '65%' }}, [
+            m('span', 'Ruby 65%')
+          ])
+        ]),
+        m('div.progress', [
+          m('div.progress-bar.progress-bar-success', { style : { width: '95%' }}, [
+            m('span', 'Backbone 95%')
+          ])
+        ]),
+        m('div.progress', [
+          m('div.progress-bar.progress-bar-success', { style : { width: '90%' }}, [
+            m('span', 'MithrilJS 90%')
+          ])
+        ]),
+        m('div.progress', [
+          m('div.progress-bar.progress-bar-success', { style : { width: '70%' }}, [
+            m('span', 'AngularJS 70%')
+          ])
+        ]),
+        m('div.progress', [
+          m('div.progress-bar.progress-bar-success', { style : { width: '85%' }}, [
+            m('span', 'Mocha 85%')
           ])
         ])
+      ]),
+      m('div.close-btn', { onclick: ctrl.hideView },  [
+        m('i.fa.fa-times-circle-o')
       ])
     ]);
 
