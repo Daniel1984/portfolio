@@ -12,18 +12,38 @@
         m('h1', 'Skills'),
         m('hr.star-light'),
         m('div.progress', [
+          m('div.progress-bar.progress-bar-success', { style : { width: '98%' }}, [
+            m('span', 'Backbone 98%')
+          ])
+        ]),
+        m('div.progress', [
           m('div.progress-bar.progress-bar-success', { style : { width: '95%' }}, [
             m('span', 'Javascript 95%')
           ])
         ]),
         m('div.progress', [
-          m('div.progress-bar.progress-bar-success', { style : { width: '90%' }}, [
-            m('span', 'HTML5 90%')
+          m('div.progress-bar.progress-bar-success', { style : { width: '95%' }}, [
+            m('span', 'HTML5 95%')
+          ])
+        ]),
+        m('div.progress', [
+          m('div.progress-bar.progress-bar-success', { style : { width: '95%' }}, [
+            m('span', 'MithrilJS 95%')
+          ])
+        ]),
+        m('div.progress', [
+          m('div.progress-bar.progress-bar-success', { style : { width: '92%' }}, [
+            m('span', 'CSS3 92%')
           ])
         ]),
         m('div.progress', [
           m('div.progress-bar.progress-bar-success', { style : { width: '90%' }}, [
-            m('span', 'CSS3 90%')
+            m('span', 'Mocha 90%')
+          ])
+        ]),
+        m('div.progress', [
+          m('div.progress-bar.progress-bar-success', { style : { width: '85%' }}, [
+            m('span', 'AngularJS 85%')
           ])
         ]),
         m('div.progress', [
@@ -39,26 +59,6 @@
         m('div.progress', [
           m('div.progress-bar.progress-bar-success', { style : { width: '65%' }}, [
             m('span', 'Ruby 65%')
-          ])
-        ]),
-        m('div.progress', [
-          m('div.progress-bar.progress-bar-success', { style : { width: '95%' }}, [
-            m('span', 'Backbone 95%')
-          ])
-        ]),
-        m('div.progress', [
-          m('div.progress-bar.progress-bar-success', { style : { width: '90%' }}, [
-            m('span', 'MithrilJS 90%')
-          ])
-        ]),
-        m('div.progress', [
-          m('div.progress-bar.progress-bar-success', { style : { width: '70%' }}, [
-            m('span', 'AngularJS 70%')
-          ])
-        ]),
-        m('div.progress', [
-          m('div.progress-bar.progress-bar-success', { style : { width: '85%' }}, [
-            m('span', 'Mocha 85%')
           ])
         ])
       ]),

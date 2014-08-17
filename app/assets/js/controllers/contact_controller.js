@@ -1,6 +1,8 @@
 (function() {
   'use strict';
 
+  var m = require('mithril');
+
   module.exports = function() {
     var _this = this;
 
@@ -14,17 +16,25 @@
 
     this.submit = function(e) {
       e.preventDefault();
-      console.log('submitting - ', _this.name());
+      if(_this.email() === '' || _this.message() === '') {
+        document.querySelector('.bg-danger').classList.remove('hide');
+      } else {
+        m.request({
+          method: 'POST',
+          url: '/contact',
+          data: {
+            email: _this.email(),
+            name: _this.name(),
+            message: _this.message()
+          }
+        });
+      }
     };
 
     this.onInputKeyUp = function(e) {
-      var elName = e.currentTarget.getAttribute('name') ;
-      var elLabel = document.querySelector('label.' + elName);
-      if(e.currentTarget.value !== '') {
-        elLabel.classList.add('active');
-      } else {
-        elLabel.classList.remove('active');
-      }
+      var activeEl = document.querySelector('label.active');
+      if(activeEl) activeEl.classList.remove('active');
+      e.currentTarget.querySelector('label').classList.add('active');
     };
 
   };

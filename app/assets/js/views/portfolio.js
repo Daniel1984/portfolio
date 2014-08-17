@@ -12,7 +12,7 @@
       m('hr.star-light'),
       ctrl.portfolio_items.map(function(item, i) {
         return m('div.col-sm-4.portfolio-item', [
-          m("a.portfolio-link[href='#'][data-module='" + item + "']", { onclick: ctrl.renderPortfolioItem }, [
+          m("a.portfolio-link[data-module='" + item + "']", { onclick: ctrl.renderPortfolioItem }, [
             m('div.caption', [
               m('div.caption-content', [
                 m('i.fa.fa-search-plus.fa-3x')

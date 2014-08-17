@@ -5,4 +5,8 @@ module.exports = function(app) {
     res.render('index');
   });
 
+  app.post('/contact', function(req, res) {
+    console.log('hahahahahahahahah------------------------------------------------------->', req.body);
+  });
+
 }

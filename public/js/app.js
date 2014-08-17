@@ -16,6 +16,8 @@
 (function() {
   'use strict';
 
+  var m = require('mithril');
+
   module.exports = function() {
     var _this = this;
 
@@ -29,24 +31,32 @@
 
     this.submit = function(e) {
       e.preventDefault();
-      console.log('submitting - ', _this.name());
+      if(_this.email() === '' || _this.message() === '') {
+        document.querySelector('.bg-danger').classList.remove('hide');
+      } else {
+        m.request({
+          method: 'POST',
+          url: '/contact',
+          data: {
+            email: _this.email(),
+            name: _this.name(),
+            message: _this.message()
+          }
+        });
+      }
     };
 
     this.onInputKeyUp = function(e) {
-      var elName = e.currentTarget.getAttribute('name') ;
-      var elLabel = document.querySelector('label.' + elName);
-      if(e.currentTarget.value !== '') {
-        elLabel.classList.add('active');
-      } else {
-        elLabel.classList.remove('active');
-      }
+      var activeEl = document.querySelector('label.active');
+      if(activeEl) activeEl.classList.remove('active');
+      e.currentTarget.querySelector('label').classList.add('active');
     };
 
   };
 
 })();
 
-},{}],3:[function(require,module,exports){
+},{"mithril":36}],3:[function(require,module,exports){
 (function() {
   'use strict';
   
@@ -173,21 +183,30 @@
   var m = require('mithril');
 
   module.exports = function() {
+    var _this = this;
+    _this.item_active = false;
 
     window.onpopstate = function(event) { 
+      _this.item_active = false;
       history.go(1);
       document.querySelector('.tiles').style.overflowY = 'auto';
       document.querySelector('.inner-item.animate').classList.remove('animate');
     };
 
     this.onItemClick = function(e) {
-      e.preventDefault();
-      history.pushState(null, null, location.href);
-      document.querySelector('.tiles').style.overflowY = 'hidden';
-      var module = e.currentTarget.getAttribute('data-module');
-      var el = e.currentTarget.querySelector('.inner-item'); 
-      m.module(el, modules[module]);
-      el.classList.add('animate');
+      if(_this.item_active) {
+        console.log('if');
+        return;
+      } else {
+        console.log('else');
+        history.pushState(null, null, location.href);
+        document.querySelector('.tiles').style.overflowY = 'hidden';
+        var module = e.currentTarget.getAttribute('data-module');
+        var el = e.currentTarget.querySelector('.inner-item'); 
+        m.module(el, modules[module]);
+        el.classList.add('animate');
+        _this.item_active = true;
+      }
     };
 
   };
@@ -490,32 +509,24 @@
         m('hr.star-light')
       ]),
       m('div.col-xs-12.col-sm-8.col-md-8.col-lg-8.col-sm-offset-2.col-md-offset-2.col-lg-offset-2', [
+        m('p.bg-danger.hide', 'Email Address and Message are required fields'),
         m('form', [
-          m('div.form-group', [
-            m('label.name', 'Name'),
+          m('div.form-group', { onclick: ctrl.onInputKeyUp }, [
+            m('label', 'Name'),
             m("input.form-control[type='text'][placeholder='Name'][name='name']",
-              { 
-                onchange: m.withAttr("value", ctrl.name),
-                onkeyup: ctrl.onInputKeyUp
-              }  
+              { onchange: m.withAttr("value", ctrl.name), value: ctrl.name() }  
             )
           ]),
-          m('div.form-group', [
-            m('label.email', 'Email Address'),
+          m('div.form-group', { onclick: ctrl.onInputKeyUp }, [
+            m('label', 'Email Address'),
             m("input.form-control[type='email'][placeholder='Email Address'][name='email']",
-              { 
-                onchange: m.withAttr("value", ctrl.email),
-                onkeyup: ctrl.onInputKeyUp
-              }  
+              { onchange: m.withAttr("value", ctrl.email), value: ctrl.email() }
             )
           ]),
-          m('div.form-group', [
-            m('label.message', 'Message'),
+          m('div.form-group', { onclick: ctrl.onInputKeyUp }, [
+            m('label', 'Message'),
             m("textarea.form-control[placeholder='Message'][rows='4'][name='message']",
-              { 
-                onchange: m.withAttr("value", ctrl.email),
-                onkeyup: ctrl.onInputKeyUp
-              }  
+              { onchange: m.withAttr("value", ctrl.message), value: ctrl.message() }
             )
           ]),
           m('div.form-group', [
@@ -601,7 +612,7 @@
       m('hr.star-light'),
       ctrl.portfolio_items.map(function(item, i) {
         return m('div.col-sm-4.portfolio-item', [
-          m("a.portfolio-link[href='#'][data-module='" + item + "']", { onclick: ctrl.renderPortfolioItem }, [
+          m("a.portfolio-link[data-module='" + item + "']", { onclick: ctrl.renderPortfolioItem }, [
             m('div.caption', [
               m('div.caption-content', [
                 m('i.fa.fa-search-plus.fa-3x')
@@ -965,18 +976,38 @@
         m('h1', 'Skills'),
         m('hr.star-light'),
         m('div.progress', [
+          m('div.progress-bar.progress-bar-success', { style : { width: '98%' }}, [
+            m('span', 'Backbone 98%')
+          ])
+        ]),
+        m('div.progress', [
           m('div.progress-bar.progress-bar-success', { style : { width: '95%' }}, [
             m('span', 'Javascript 95%')
           ])
         ]),
         m('div.progress', [
-          m('div.progress-bar.progress-bar-success', { style : { width: '90%' }}, [
-            m('span', 'HTML5 90%')
+          m('div.progress-bar.progress-bar-success', { style : { width: '95%' }}, [
+            m('span', 'HTML5 95%')
+          ])
+        ]),
+        m('div.progress', [
+          m('div.progress-bar.progress-bar-success', { style : { width: '95%' }}, [
+            m('span', 'MithrilJS 95%')
+          ])
+        ]),
+        m('div.progress', [
+          m('div.progress-bar.progress-bar-success', { style : { width: '92%' }}, [
+            m('span', 'CSS3 92%')
           ])
         ]),
         m('div.progress', [
           m('div.progress-bar.progress-bar-success', { style : { width: '90%' }}, [
-            m('span', 'CSS3 90%')
+            m('span', 'Mocha 90%')
+          ])
+        ]),
+        m('div.progress', [
+          m('div.progress-bar.progress-bar-success', { style : { width: '85%' }}, [
+            m('span', 'AngularJS 85%')
           ])
         ]),
         m('div.progress', [
@@ -992,26 +1023,6 @@
         m('div.progress', [
           m('div.progress-bar.progress-bar-success', { style : { width: '65%' }}, [
             m('span', 'Ruby 65%')
-          ])
-        ]),
-        m('div.progress', [
-          m('div.progress-bar.progress-bar-success', { style : { width: '95%' }}, [
-            m('span', 'Backbone 95%')
-          ])
-        ]),
-        m('div.progress', [
-          m('div.progress-bar.progress-bar-success', { style : { width: '90%' }}, [
-            m('span', 'MithrilJS 90%')
-          ])
-        ]),
-        m('div.progress', [
-          m('div.progress-bar.progress-bar-success', { style : { width: '70%' }}, [
-            m('span', 'AngularJS 70%')
-          ])
-        ]),
-        m('div.progress', [
-          m('div.progress-bar.progress-bar-success', { style : { width: '85%' }}, [
-            m('span', 'Mocha 85%')
           ])
         ])
       ]),
