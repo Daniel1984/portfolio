@@ -3,8 +3,7 @@
 
   var m = require('mithril'); 
 
-  module.exports = function(ctrl) {
-    var view = m("div.skills-p.row-fluid.fade-out", { config: ctrl.isReady }, [
+  module.exports = function(ctrl) { return m("div.skills-p.row-fluid.fade-out", [
       m('div.back-top-btn', { onclick: ctrl.hideView }, [
         m('i.fa.fa-long-arrow-left')
       ]),
@@ -66,8 +65,6 @@
         m('i.fa.fa-times-circle-o')
       ])
     ]);
-
-    return view;
   };
 
 })();

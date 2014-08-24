@@ -22,7 +22,6 @@
           ])
         ]);
       }),
-      m('div.portfolio-renderer'),
       m('div.close-btn', { onclick: ctrl.hideView },  [
         m('i.fa.fa-times-circle-o')
       ])

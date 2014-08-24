@@ -50,7 +50,6 @@ div.tiles {
       div.header { height: 60%; }
       div.body { height: 40%; }
       img { max-height: 100%; }
-      div.inner-item { background: darken(#5fea86, 20%); }
       &:hover{
         background: darken(#5fea86, 20%)!important;
       }
@@ -64,7 +63,6 @@ div.tiles {
         text-align: center;
         font-size: 7em;
       }
-      div.inner-item { background: darken(#dda0dd, 20%); }
       &:hover{
         background: darken(#dda0dd, 20%)!important;
       }
@@ -78,7 +76,6 @@ div.tiles {
         text-align: center;
         font-size: 7em;
       }
-      div.inner-item { background: darken(#b388ff, 10%); }
       &:hover{
         background: darken(#b388ff, 10%)!important;
       }
@@ -92,7 +89,6 @@ div.tiles {
         text-align: center;
         font-size: 7em;
       }
-      div.inner-item { background: darken(#fada72, 15%); }
       &:hover{
         background: darken(#fada72, 15%)!important;
       }
@@ -105,26 +101,8 @@ div.tiles {
         text-align: center;
         font-size: 7em;
       }
-      div.inner-item { background: darken(#ff8a80, 10%); }
       &:hover{
         background: darken(#ff8a80, 10%)!important;
-      }
-    }
-    div.inner-item {
-      transition-duration: 0.3s;
-      position: fixed;
-      top: 0;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      overflow-y: auto;
-      -webkit-transform: scale(0);
-      -moz-transform: scale(0);
-      transform: scale(0);
-      &.animate {
-        -webkit-transform: scale(1); 
-        -moz-transform: scale(1);
-        transform: scale(1);
       }
     }
   }
