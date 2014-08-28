@@ -18,19 +18,19 @@
           m('div.form-group', { onclick: ctrl.onInputKeyUp }, [
             m('label', 'Name'),
             m("input.form-control[type='text'][placeholder='Name'][name='name']",
-              { onchange: m.withAttr("value", ctrl.name), value: ctrl.name() }  
+              { onchange: m.withAttr("value", ctrl.model.name), value: ctrl.model.name() }  
             )
           ]),
           m('div.form-group', { onclick: ctrl.onInputKeyUp }, [
             m('label', 'Email Address'),
             m("input.form-control[type='email'][placeholder='Email Address'][name='email']",
-              { onchange: m.withAttr("value", ctrl.email), value: ctrl.email() }
+              { onchange: m.withAttr("value", ctrl.model.email), value: ctrl.model.email() }
             )
           ]),
           m('div.form-group', { onclick: ctrl.onInputKeyUp }, [
             m('label', 'Message'),
             m("textarea.form-control[placeholder='Message'][rows='4'][name='message']",
-              { onchange: m.withAttr("value", ctrl.message), value: ctrl.message() }
+              { onchange: m.withAttr("value", ctrl.model.message), value: ctrl.model.message() }
             )
           ]),
           m('div.form-group', [

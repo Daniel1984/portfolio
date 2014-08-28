@@ -17,13 +17,12 @@
   'use strict';
 
   var m = require('mithril');
+  var Model = require('../models/contact');
 
   module.exports = function() {
     var _this = this;
 
-    this.name = m.prop('');
-    this.email = m.prop('');
-    this.message = m.prop('');
+    this.model = new Model();
     
     this.hideView = function() {
       window.history.go(0);
@@ -31,17 +30,18 @@
 
     this.submit = function(e) {
       e.preventDefault();
-      if(_this.email() === '' || _this.message() === '') {
+      if(_this.model.email() === '' || _this.model.message() === '') {
         document.querySelector('.bg-danger').classList.remove('hide');
       } else {
-        m.request({
-          method: 'POST',
-          url: '/contact',
-          data: {
-            email: _this.email(),
-            name: _this.name(),
-            message: _this.message()
-          }
+        var el = e.currentTarget;
+        el.setAttribute('disabled', true);
+        el.innerHTML = 'Sending...';
+        _this.model.sendMail().then(function() {
+          el.removeAttribute('disabled');
+          el.innerHTML = 'Send';
+          _this.model.resetAttributes();
+        }, function(err) {
+          console.log('error -> ', err); 
         });
       }
     };
@@ -56,7 +56,7 @@
 
 })();
 
-},{"mithril":36}],3:[function(require,module,exports){
+},{"../models/contact":9,"mithril":37}],3:[function(require,module,exports){
 (function() {
   'use strict';
   
@@ -107,7 +107,7 @@
 
 })();
 
-},{"../modules/portfolio/casino":13,"../modules/portfolio/orbit":14,"../modules/portfolio/plane":15,"../modules/portfolio/pt":16,"../modules/portfolio/slot":17,"../modules/portfolio/ss":18,"../modules/portfolio/ssc":19}],5:[function(require,module,exports){
+},{"../modules/portfolio/casino":14,"../modules/portfolio/orbit":15,"../modules/portfolio/plane":16,"../modules/portfolio/pt":17,"../modules/portfolio/slot":18,"../modules/portfolio/ss":19,"../modules/portfolio/ssc":20}],5:[function(require,module,exports){
 (function() {
   'use strict';
 
@@ -212,7 +212,7 @@
 
 })();
 
-},{"../modules/about":9,"../modules/contact":10,"../modules/experience":11,"../modules/portfolio":12,"../modules/skills":21,"mithril":36}],8:[function(require,module,exports){
+},{"../modules/about":10,"../modules/contact":11,"../modules/experience":12,"../modules/portfolio":13,"../modules/skills":22,"mithril":37}],8:[function(require,module,exports){
 (function() {
   "use strict";
 
@@ -228,7 +228,43 @@
 
 })();
 
-},{"./modules/portfolio_item":20,"./modules/tiles":22,"mithril":36}],9:[function(require,module,exports){
+},{"./modules/portfolio_item":21,"./modules/tiles":23,"mithril":37}],9:[function(require,module,exports){
+(function() {
+  'use strict';
+
+  var m = require('mithril');
+
+  module.exports = function() {
+    var _this = this;
+
+    this.name = m.prop('');
+    this.email = m.prop('');
+    this.message = m.prop('');
+    
+    this.sendMail = function() {
+      var data = m.request({
+        method: 'POST',
+        url: '/contact',
+        data: {
+          email: _this.email(),
+          name: _this.name(),
+          message: _this.message()
+        }
+      });
+      return data;
+    };
+
+    this.resetAttributes = function() {
+      this.email('');
+      this.name('');
+      this.message('');
+    };
+
+  };
+
+})();
+
+},{"mithril":37}],10:[function(require,module,exports){
 (function() {
   'use strict';
 
@@ -242,7 +278,7 @@
 
 })();
 
-},{"../controllers/about_controller":1,"../views/about":23}],10:[function(require,module,exports){
+},{"../controllers/about_controller":1,"../views/about":24}],11:[function(require,module,exports){
 (function() {
   'use strict'; 
 
@@ -256,7 +292,7 @@
 
 })();
 
-},{"../controllers/contact_controller":2,"../views/contact":24}],11:[function(require,module,exports){
+},{"../controllers/contact_controller":2,"../views/contact":25}],12:[function(require,module,exports){
 (function() {
   'use strict'; 
 
@@ -270,7 +306,7 @@
 
 })();
 
-},{"../controllers/experience_controller":3,"../views/experience":25}],12:[function(require,module,exports){
+},{"../controllers/experience_controller":3,"../views/experience":26}],13:[function(require,module,exports){
 (function() {
   'use strict';
 
@@ -284,7 +320,7 @@
 
 })();
 
-},{"../controllers/portfolio_controller":4,"../views/portfolio":26}],13:[function(require,module,exports){
+},{"../controllers/portfolio_controller":4,"../views/portfolio":27}],14:[function(require,module,exports){
 (function() {
   'use strict';
 
@@ -300,7 +336,7 @@
 
 })();
 
-},{"../../controllers/portfolio_item_controller":5,"../../views/portfolio/casino":27}],14:[function(require,module,exports){
+},{"../../controllers/portfolio_item_controller":5,"../../views/portfolio/casino":28}],15:[function(require,module,exports){
 (function() {
   'use strict';
 
@@ -316,7 +352,7 @@
 
 })();
 
-},{"../../controllers/portfolio_item_controller":5,"../../views/portfolio/orbit":28}],15:[function(require,module,exports){
+},{"../../controllers/portfolio_item_controller":5,"../../views/portfolio/orbit":29}],16:[function(require,module,exports){
 (function() {
   'use strict';
 
@@ -332,7 +368,7 @@
 
 })();
 
-},{"../../controllers/portfolio_item_controller":5,"../../views/portfolio/plane":29}],16:[function(require,module,exports){
+},{"../../controllers/portfolio_item_controller":5,"../../views/portfolio/plane":30}],17:[function(require,module,exports){
 (function() {
   'use strict';
 
@@ -348,7 +384,7 @@
 
 })();
 
-},{"../../controllers/portfolio_item_controller":5,"../../views/portfolio/pt":30}],17:[function(require,module,exports){
+},{"../../controllers/portfolio_item_controller":5,"../../views/portfolio/pt":31}],18:[function(require,module,exports){
 (function() {
   'use strict';
 
@@ -364,7 +400,7 @@
 
 })();
 
-},{"../../controllers/portfolio_item_controller":5,"../../views/portfolio/slot":31}],18:[function(require,module,exports){
+},{"../../controllers/portfolio_item_controller":5,"../../views/portfolio/slot":32}],19:[function(require,module,exports){
 (function() {
   'use strict';
 
@@ -380,7 +416,7 @@
 
 })();
 
-},{"../../controllers/portfolio_item_controller":5,"../../views/portfolio/ss":32}],19:[function(require,module,exports){
+},{"../../controllers/portfolio_item_controller":5,"../../views/portfolio/ss":33}],20:[function(require,module,exports){
 (function() {
   'use strict';
 
@@ -396,7 +432,7 @@
 
 })();
 
-},{"../../controllers/portfolio_item_controller":5,"../../views/portfolio/ssc":33}],20:[function(require,module,exports){
+},{"../../controllers/portfolio_item_controller":5,"../../views/portfolio/ssc":34}],21:[function(require,module,exports){
 (function() {
   'use strict';
   
@@ -421,7 +457,7 @@
 
 })();
 
-},{"../controllers/portfolio_controller":4,"../views/portfolio/casino":27,"../views/portfolio/orbit":28,"../views/portfolio/plane":29,"../views/portfolio/pt":30,"../views/portfolio/slot":31,"../views/portfolio/ss":32,"../views/portfolio/ssc":33,"mithril":36}],21:[function(require,module,exports){
+},{"../controllers/portfolio_controller":4,"../views/portfolio/casino":28,"../views/portfolio/orbit":29,"../views/portfolio/plane":30,"../views/portfolio/pt":31,"../views/portfolio/slot":32,"../views/portfolio/ss":33,"../views/portfolio/ssc":34,"mithril":37}],22:[function(require,module,exports){
 (function() {
   'use strict';
 
@@ -435,7 +471,7 @@
 
 })();
 
-},{"../controllers/skills_controller":6,"../views/skills":34}],22:[function(require,module,exports){
+},{"../controllers/skills_controller":6,"../views/skills":35}],23:[function(require,module,exports){
 (function() {
   'use strict';
 
@@ -449,7 +485,7 @@
 
 })(); 
 
-},{"../controllers/tiles_controller":7,"../views/tiles":35}],23:[function(require,module,exports){
+},{"../controllers/tiles_controller":7,"../views/tiles":36}],24:[function(require,module,exports){
 (function() {
   'use strict';
 
@@ -478,7 +514,7 @@
 
 })();
 
-},{"mithril":36}],24:[function(require,module,exports){
+},{"mithril":37}],25:[function(require,module,exports){
 (function() {
   'use strict';
 
@@ -499,19 +535,19 @@
           m('div.form-group', { onclick: ctrl.onInputKeyUp }, [
             m('label', 'Name'),
             m("input.form-control[type='text'][placeholder='Name'][name='name']",
-              { onchange: m.withAttr("value", ctrl.name), value: ctrl.name() }  
+              { onchange: m.withAttr("value", ctrl.model.name), value: ctrl.model.name() }  
             )
           ]),
           m('div.form-group', { onclick: ctrl.onInputKeyUp }, [
             m('label', 'Email Address'),
             m("input.form-control[type='email'][placeholder='Email Address'][name='email']",
-              { onchange: m.withAttr("value", ctrl.email), value: ctrl.email() }
+              { onchange: m.withAttr("value", ctrl.model.email), value: ctrl.model.email() }
             )
           ]),
           m('div.form-group', { onclick: ctrl.onInputKeyUp }, [
             m('label', 'Message'),
             m("textarea.form-control[placeholder='Message'][rows='4'][name='message']",
-              { onchange: m.withAttr("value", ctrl.message), value: ctrl.message() }
+              { onchange: m.withAttr("value", ctrl.model.message), value: ctrl.model.message() }
             )
           ]),
           m('div.form-group', [
@@ -524,7 +560,7 @@
 
 })();
 
-},{"mithril":36}],25:[function(require,module,exports){
+},{"mithril":37}],26:[function(require,module,exports){
 (function() {
   'use strict';
 
@@ -582,7 +618,7 @@
 
 })();
 
-},{"mithril":36}],26:[function(require,module,exports){
+},{"mithril":37}],27:[function(require,module,exports){
 (function() {
   'use strict';
 
@@ -615,7 +651,7 @@
 
 })();
 
-},{"mithril":36}],27:[function(require,module,exports){
+},{"mithril":37}],28:[function(require,module,exports){
 (function() {
   'use strict';
 
@@ -657,7 +693,7 @@
 
 })();
 
-},{"mithril":36}],28:[function(require,module,exports){
+},{"mithril":37}],29:[function(require,module,exports){
 (function() {
   'use strict';
 
@@ -699,7 +735,7 @@
 
 })();
 
-},{"mithril":36}],29:[function(require,module,exports){
+},{"mithril":37}],30:[function(require,module,exports){
 (function() {
   'use strict';
 
@@ -747,7 +783,7 @@
 
 })();
 
-},{"mithril":36}],30:[function(require,module,exports){
+},{"mithril":37}],31:[function(require,module,exports){
 (function() {
   'use strict';
 
@@ -797,7 +833,7 @@
 
 })();
 
-},{"mithril":36}],31:[function(require,module,exports){
+},{"mithril":37}],32:[function(require,module,exports){
 (function() {
   'use strict';
 
@@ -839,7 +875,7 @@
 
 })();
 
-},{"mithril":36}],32:[function(require,module,exports){
+},{"mithril":37}],33:[function(require,module,exports){
 (function() {
   'use strict';
 
@@ -892,7 +928,7 @@
 
 })();
 
-},{"mithril":36}],33:[function(require,module,exports){
+},{"mithril":37}],34:[function(require,module,exports){
 (function() {
   'use strict';
 
@@ -945,7 +981,7 @@
 
 })();
 
-},{"mithril":36}],34:[function(require,module,exports){
+},{"mithril":37}],35:[function(require,module,exports){
 (function() {
   'use strict';
 
@@ -1017,7 +1053,7 @@
 
 })();
 
-},{"mithril":36}],35:[function(require,module,exports){
+},{"mithril":37}],36:[function(require,module,exports){
 (function() {
   'use strict';
 
@@ -1073,7 +1109,7 @@
 
 })();
 
-},{"mithril":36}],36:[function(require,module,exports){
+},{"mithril":37}],37:[function(require,module,exports){
 Mithril = m = new function app(window, undefined) {
 	var type = {}.toString
 	var parser = /(?:(^|#|\.)([^#\.\[\]]+))|(\[.+?\])/g, attrParser = /\[(.+?)(?:=("|'|)(.*?)\2)?\]/

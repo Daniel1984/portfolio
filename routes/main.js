@@ -1,8 +1,4 @@
-var mailer = require(process.cwd() + '/services/mailer');
-var ejs = require('ejs');
-var fs = require('fs');
-
-var emailTpl = fs.readFileSync(process.cwd() + '/views/emails/contact_view.ejs', 'utf8');
+var contact_ctrl = require(process.cwd() + '/controllers/contact_ctrl');
 
 module.exports = function(app) {
 
@@ -10,15 +6,6 @@ module.exports = function(app) {
     res.render('index');
   });
 
-  app.post('/contact', function(req, res) {
-    console.log('hahahahahahahahah------------------------------------------------------->', req.body);
-		mailer.sendMail({
-			from: 'linksmivakarai@gmail.com', 
-    	to: 'daniel.stenger@yahoo.com',
-      subject: 'Daniel contact form',
-      html: ejs.render(emailTpl, { email_data: req.body })
-		});
-  });
-
+  app.post('/contact', contact_ctrl.sendMail);
 
 }

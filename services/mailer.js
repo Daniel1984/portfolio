@@ -1,15 +1,16 @@
-var nodeMailer = require('nodemailer');
+var nodemailer = require('nodemailer');
 var config = require('config');
 
-var smtpTransportr = nodeMailer.createTransport("SMTP", { service: config.email.service }, { 
-										 auth: {
-    									 user: config.email.user,
-    									 pass: config.email.pass
-										 }})
+var transporter = nodemailer.createTransport({
+    service: 'Gmail',
+    auth: {
+      user: config.email.user,
+      pass: config.email.pass
+    }
+});
 
-module.exports.sendMail = function(options) {
-  smtpTransportr.sendMail(mailOptions, function(err, res) {
-    console.log("error --->>>", err);
-    console.log("response --->>>>", res);
+module.exports.sendMail = function(options, cb) {
+  transporter.sendMail(options, function(err, res) {
+    cb(err, res);
   });
 }
