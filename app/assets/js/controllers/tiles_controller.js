@@ -19,7 +19,8 @@
       _this.item_active = false;
       history.go(1);
       document.querySelector('.tiles').style.overflowY = 'auto';
-      document.querySelector('.tile-item-renderer.animate').classList.remove('animate');
+			var el = document.querySelector('.tile-item-renderer.animate');
+      el && el.classList.remove('animate');
     };
 
     this.onItemClick = function(e) {
