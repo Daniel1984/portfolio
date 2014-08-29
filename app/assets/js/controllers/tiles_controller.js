@@ -18,8 +18,8 @@
     window.onpopstate = function(event) { 
       _this.item_active = false;
       history.go(1);
-      document.querySelector('.tiles').style.overflowY = 'auto';
-			var el = document.querySelector('.tile-item-renderer.animate');
+      document.querySelector('.ui-router').classList.remove('hide-overflow');
+      var el = document.querySelector('.tile-item-renderer.animate');
       el && el.classList.remove('animate');
     };
 
@@ -28,7 +28,7 @@
         return;
       } else {
         history.pushState(null, null, location.href);
-        document.querySelector('.tiles').style.overflowY = 'hidden';
+        document.querySelector('.ui-router').classList.add('hide-overflow');
         var module = e.currentTarget.getAttribute('data-module');
         var el = document.querySelector('.tile-item-renderer'); 
         m.module(el, modules[module]);
