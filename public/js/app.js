@@ -6,6 +6,7 @@
   
     this.hideView = function() {
       document.querySelector('.animate').classList.remove('animate');
+      document.querySelector('.ui-router.hide-overflow').classList.remove('hide-overflow');
     };
 
   };
@@ -26,6 +27,7 @@
     
     this.hideView = function() {
       document.querySelector('.animate').classList.remove('animate');
+      document.querySelector('.ui-router.hide-overflow').classList.remove('hide-overflow');
     };
 
     this.submit = function(e) {
@@ -64,6 +66,7 @@
 
     this.hideView = function() {
       document.querySelector('.animate').classList.remove('animate');
+      document.querySelector('.ui-router.hide-overflow').classList.remove('hide-overflow');
     };
 
   };
@@ -89,6 +92,7 @@
   
     this.hideView = function() {
       document.querySelector('.animate').classList.remove('animate');
+      document.querySelector('.ui-router.hide-overflow').classList.remove('hide-overflow');
     };
 
     this.renderPortfolioItem = function(e) {
@@ -115,6 +119,7 @@
 
     this.fadeOutView = function() {
       document.querySelector('.portfolio-renderer').classList.remove('animate');
+      document.querySelector('.ui-router.hide-overflow').classList.remove('hide-overflow');
     };
 
   };
@@ -148,6 +153,7 @@
 
     this.hideView = function() {
       document.querySelector('.animate').classList.remove('animate');
+      document.querySelector('.ui-router.hide-overflow').classList.remove('hide-overflow');
     };
 
   };
