@@ -4,7 +4,7 @@
   module.exports = function() {
 
     this.hideView = function() {
-      window.history.go(0);
+      document.querySelector('.animate').classList.remove('animate');
     };
 
   };

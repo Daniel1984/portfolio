@@ -10,7 +10,7 @@
     this.model = new Model();
     
     this.hideView = function() {
-      window.history.go(0);
+      document.querySelector('.animate').classList.remove('animate');
     };
 
     this.submit = function(e) {

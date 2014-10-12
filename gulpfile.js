@@ -8,7 +8,6 @@ var gulp = require('gulp'),
     stylish = require('jshint-stylish'),
     sequence = require('run-sequence'),
     less = require('gulp-less'),
-    msx = require('gulp-msx'),
     gutil =  require('gulp-util');
 
 var paths = {

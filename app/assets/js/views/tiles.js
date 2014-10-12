@@ -22,6 +22,13 @@
         ])
       ]),
 
+      m("a.tile-item.blog[href=http://aciddaniel.svbtle.com/]", { style: { background: '#B4BF72' }}, [
+        m('div.body', [
+          m('i.fa.fa-book'),
+          m('h2', 'Blog')
+        ])
+      ]),
+
       m("div.tile-item.portfolio [data-module='portfolio']", { style: { background: '#fada72' }, onclick: ctrl.onItemClick.bind(ctrl) }, [
         m('div.body', [
           m('i.fa.fa-suitcase'),

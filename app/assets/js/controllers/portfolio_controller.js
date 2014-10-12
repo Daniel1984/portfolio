@@ -15,7 +15,7 @@
     this.portfolio_items = ['ssc','pt','ss','plane','slot','orbit','casino'];
   
     this.hideView = function() {
-      window.history.go(0);
+      document.querySelector('.animate').classList.remove('animate');
     };
 
     this.renderPortfolioItem = function(e) {

@@ -23,7 +23,11 @@ div.tiles {
   width: 100%;
   height: 100%;
   .flex();
-  div.tile-item {
+  a {
+    text-decoration: none;
+    color: #333;
+  }
+  div.tile-item, a.tile-item {
     .flex();
     -webkit-flex-direction: column; 
     flex-direction: column; 
@@ -53,8 +57,7 @@ div.tiles {
     }
     &.skills {
       border-top: none;
-      border-right: none;
-      width: 50%;
+      width: 25%;
       height: 50%;
       div.body {
         text-align: center;
@@ -62,6 +65,19 @@ div.tiles {
       }
       &:hover{
         background: darken(#dda0dd, 20%)!important;
+      }
+    }
+    &.blog {
+      border-top: none;
+      border-right: none;
+      width: 25%;
+      height: 50%;
+      div.body {
+        text-align: center;
+        font-size: 7em;
+      }
+      &:hover{
+        background: darken(#B4BF72, 20%)!important;
       }
     }
     &.contact {
