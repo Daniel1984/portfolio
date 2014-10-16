@@ -21,7 +21,7 @@
           ]),
           m('div.col-xs-12.col-sm-12.col-md-6.col-lg-6', [
             m('blockquote', [ m('h4', 'Address') ]),
-            m("a[href='http://samesystem.com/'][target='_blank']", 'https://www.youtube.com/watch?v=ovYsEs4DoQc')
+            m("a[href='https://www.youtube.com/watch?v=ovYsEs4DoQc'][target='_blank']", 'http://samesystem.com')
           ]),
           m('div.col-xs-12.col-sm-12.col-md-12.col-lg-12', [
             m('blockquote', [ m('h4', 'Tools used') ]),
