@@ -41,6 +41,16 @@
           ])
         ]),
         m('div.progress', [
+          m('div.progress-bar.progress-bar-success', { style : { width: '90%' }}, [
+            m('span', 'PIXI.JS 90%')
+          ])
+        ]),
+        m('div.progress', [
+          m('div.progress-bar.progress-bar-success', { style : { width: '90%' }}, [
+            m('span', 'COCOONJS 90%')
+          ])
+        ]),
+        m('div.progress', [
           m('div.progress-bar.progress-bar-success', { style : { width: '85%' }}, [
             m('span', 'AngularJS 85%')
           ])
