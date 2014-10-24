@@ -21,7 +21,7 @@
           ]),
           m('div.col-xs-12.col-sm-12.col-md-6.col-lg-6', [
             m('blockquote', [ m('h4', 'Address') ]),
-            m("a[href='http://plane-flappy.herokuapp.com/'][target='_blank']", 'http://www.flappyplane.com')
+            m("a[href='https://min60fps.herokuapp.com/fp/'][target='_blank']", 'http://www.flappyplane.com')
           ]),
           m('div.col-xs-12.col-sm-12.col-md-12.col-lg-12', [
             m('blockquote', [ m('h4', 'Tools used') ]),
