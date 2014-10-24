@@ -15,11 +15,11 @@
         m('div.row.content', [
           m('div.col-xs-12.col-sm-12.col-md-6.col-lg-6', [
             m('blockquote', [ m('h4', 'About') ]),
-            m('p', 'Yet another result of my habby. HTML5 game build with pixi.js. It\'s not 100% finished, so don\' judge too fast ;)')
+            m('p', 'Yet another result of my hobby. HTML5 game build with pixi.js. It\'s not 100% finished, so don\'t judge too fast ;)')
           ]),
           m('div.col-xs-12.col-sm-12.col-md-6.col-lg-6', [
             m('blockquote', [ m('h4', 'Address') ]),
-            m("a[href='https://min60fps.herokuapp.com/jj/'][target='_blank']", 'http://www.flappyplane.com')
+            m("a[href='https://min60fps.herokuapp.com/jj/'][target='_blank']", 'http://www.dannyjump.com')
           ]),
           m('div.col-xs-12.col-sm-12.col-md-12.col-lg-12', [
             m('blockquote', [ m('h4', 'Tools used') ]),
