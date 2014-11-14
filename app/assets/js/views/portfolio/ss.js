@@ -26,7 +26,7 @@
           m('div.col-xs-12.col-sm-12.col-md-12.col-lg-12', [
             m('blockquote', [ m('h4', 'Tools used') ]),
             m('span.label.label-danger', 'Cordova'),
-            m('span.label.label-danger', 'Backbone.js'),
+            m('span.label.label-danger', 'Mithril.js'),
             m('span.label.label-danger', 'Browserify'),
             m('span.label.label-danger', 'Mocha'),
             m('span.label.label-danger', 'Chai'),
